@@ -1,0 +1,67 @@
+2025-09-25 00:13:36.807 +00:00 [INF] Now listening on: http://localhost:5142
+2025-09-25 00:13:36.959 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-25 00:13:36.962 +00:00 [INF] Hosting environment: Development
+2025-09-25 00:13:36.962 +00:00 [INF] Content root path: /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/Issuer/Issuer.API
+2025-09-25 00:13:50.780 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.html - null null
+2025-09-25 00:13:51.051 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.html - 200 null text/html;charset=utf-8 278.571ms
+2025-09-25 00:13:51.093 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui.css - null null
+2025-09-25 00:13:51.093 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui-bundle.js - null null
+2025-09-25 00:13:51.094 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.css - null null
+2025-09-25 00:13:51.110 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui-standalone-preset.js - null null
+2025-09-25 00:13:51.116 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.css - 200 152 text/css 24.9032ms
+2025-09-25 00:13:51.118 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.js - null null
+2025-09-25 00:13:51.116 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui.css - 200 23647 text/css 25.1191ms
+2025-09-25 00:13:51.121 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.js - 200 null application/javascript;charset=utf-8 1.7831ms
+2025-09-25 00:13:51.152 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui-standalone-preset.js - 200 70860 text/javascript 42.0142ms
+2025-09-25 00:13:51.153 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui-bundle.js - 200 417980 text/javascript 62.3213ms
+2025-09-25 00:13:51.526 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/favicon-16x16.png - null null
+2025-09-25 00:13:51.531 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/favicon-16x16.png - 200 665 image/png 4.7068ms
+2025-09-25 00:13:51.586 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - null null
+2025-09-25 00:13:51.830 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 244.0383ms
+2025-09-25 00:16:03.974 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/api/Issuer - application/json 301
+2025-09-25 00:16:03.993 +00:00 [WRN] Failed to determine the https port for redirect.
+2025-09-25 00:16:03.999 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API)'
+2025-09-25 00:16:04.043 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] CreateCitizen(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-09-25 00:16:04.183 +00:00 [INF] Trying to create citizen's digital version
+2025-09-25 00:16:04.185 +00:00 [INF] Started creating citizen digital card
+2025-09-25 00:16:04.188 +00:00 [INF] Trying to generate jwt
+2025-09-25 00:16:04.194 +00:00 [INF] Trying to generate jwt
+2025-09-25 00:16:04.794 +00:00 [INF] JWT generated
+2025-09-25 00:16:04.794 +00:00 [INF] jwt is being sent
+2025-09-25 00:16:04.831 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-09-25 00:16:04.859 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API) in 801.232ms
+2025-09-25 00:16:04.859 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API)'
+2025-09-25 00:16:04.860 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/Issuer - 200 null application/json; charset=utf-8 885.9413ms
+2025-09-25 00:16:49.081 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/api/Issuer - application/json 301
+2025-09-25 00:16:49.082 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API)'
+2025-09-25 00:16:49.083 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] CreateCitizen(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-09-25 00:16:49.086 +00:00 [INF] Trying to create citizen's digital version
+2025-09-25 00:16:49.087 +00:00 [INF] Started creating citizen digital card
+2025-09-25 00:16:49.087 +00:00 [INF] Trying to generate jwt
+2025-09-25 00:16:49.087 +00:00 [INF] Trying to generate jwt
+2025-09-25 00:16:49.812 +00:00 [INF] JWT generated
+2025-09-25 00:16:49.814 +00:00 [INF] jwt is being sent
+2025-09-25 00:16:49.815 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-09-25 00:16:49.816 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API) in 732.734ms
+2025-09-25 00:16:49.816 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API)'
+2025-09-25 00:16:49.816 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/Issuer - 200 null application/json; charset=utf-8 735.1148ms
+2025-09-25 00:16:55.279 +00:00 [INF] Application is shutting down...
+2025-09-25 00:17:07.112 +00:00 [INF] Now listening on: http://localhost:5142
+2025-09-25 00:17:07.221 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-25 00:17:07.225 +00:00 [INF] Hosting environment: Development
+2025-09-25 00:17:07.225 +00:00 [INF] Content root path: /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/Issuer/Issuer.API
+2025-09-25 00:17:14.853 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/api/Issuer - application/json 301
+2025-09-25 00:17:14.956 +00:00 [WRN] Failed to determine the https port for redirect.
+2025-09-25 00:17:14.965 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API)'
+2025-09-25 00:17:15.012 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] CreateCitizen(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-09-25 00:17:15.121 +00:00 [INF] Trying to create citizen's digital version
+2025-09-25 00:17:15.122 +00:00 [INF] Started creating citizen digital card
+2025-09-25 00:17:15.124 +00:00 [INF] Trying to generate jwt
+2025-09-25 00:17:15.128 +00:00 [INF] Trying to generate jwt
+2025-09-25 00:17:16.059 +00:00 [INF] JWT generated
+2025-09-25 00:17:16.060 +00:00 [INF] jwt is being sent
+2025-09-25 00:17:16.098 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-09-25 00:17:16.127 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API) in 1094.3211ms
+2025-09-25 00:17:16.153 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizen (Issuer.API)'
+2025-09-25 00:17:16.157 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/Issuer - 200 null text/plain; charset=utf-8 1309.3008ms
+2025-09-25 00:17:28.552 +00:00 [INF] Application is shutting down...

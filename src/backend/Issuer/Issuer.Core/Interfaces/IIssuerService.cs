@@ -2,7 +2,7 @@ using System;
 
 using Issuer.API.DTO;
 
-namespace Issuer.Core.Interfaces.IService;
+namespace Issuer.Core.Interfaces;
 
 public interface IIssuerService
 {

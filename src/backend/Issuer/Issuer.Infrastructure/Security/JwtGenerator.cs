@@ -5,22 +5,27 @@ using System.Security.Claims;
 using Issuer.Core;
 using Issuer.Core.Interfaces;
 using Issuer.Infrastructure.Data;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Issuer.Infrastructure;
 
 public class JwtGenerator : IJwtGenerator
 {
-    ILogger _lo
-    public IRsaKeyService _rsa;
+    private readonly IRsaKeyService _rsa;
+    private readonly ILogger<JwtGenerator> _logger;
 
-    public JwtGenerator(IRsaKeyService rsa)
+
+    public JwtGenerator(IRsaKeyService rsa, ILogger<JwtGenerator> logger)
     {
         _rsa = rsa;
+        _logger = logger;
     }
 
+    // Generate jwt for citizen details
     public string GenerateJwt(Citizen citizen)
     {
+        _logger.LogInformation("Trying to generate jwt");
         var tokenHandler = new JwtSecurityTokenHandler();
 
         var privateKey = _rsa.PrivateKey();
@@ -51,6 +56,8 @@ public class JwtGenerator : IJwtGenerator
 
         var jwt = tokenHandler.CreateToken(tokenDescriptor);
         var jwtString = tokenHandler.WriteToken(jwt);
+
+        _logger.LogInformation("JWT generated");
 
         return jwtString;
     }

@@ -1,10 +1,15 @@
+using Issuer.Core.Interfaces;
+using Issuer.Core.Service;
+using Issuer.Infrastructure;
+using Issuer.Infrastructure.Data;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 Log.Logger = new LoggerConfiguration()
-    .WriteTo.File("Log/log.txt");
+    .WriteTo.File("Log/log.txt")
+    .CreateLogger();
 
 // Add services to the container.
 
@@ -14,7 +19,14 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddSwaggerGen();
 
-builder.Logging.Serilog();
+
+//Add serilog to system
+builder.Logging.AddSerilog();
+
+
+builder.Services.AddScoped<IIssuerService, IssuerService>();
+builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
+builder.Services.AddScoped<IRsaKeyService, RsaKeyService>();
 
 var app = builder.Build();
 

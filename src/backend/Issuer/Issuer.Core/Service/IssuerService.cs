@@ -1,9 +1,7 @@
 using System;
 using Issuer.API.DTO;
 using Issuer.Core.Interfaces;
-using Issuer.Core.Interfaces.IService;
-
-
+using Microsoft.Extensions.Logging;
 
 namespace Issuer.Core.Service;
 
@@ -11,15 +9,21 @@ public class IssuerService : IIssuerService
 {
     private readonly IJwtGenerator _jwtGenerator;
 
-    public IssuerService(IJwtGenerator jwtGenerator)
+    private readonly ILogger<IssuerService> _logger;
+
+    public IssuerService(IJwtGenerator jwtGenerator, ILogger<IssuerService> logger)
     {
         _jwtGenerator = jwtGenerator;
+        _logger = logger;
     }
+
     public string CreateCitizen(CitizenDTO citizenDTO)
     {
+        _logger.LogInformation("Started creating citizen digital card");
 
         if (citizenDTO == null)
         {
+            _logger.LogError("Citizen not passed");
             throw new ArgumentNullException("Citizen not passed");
         }
         // Contains all citizen's info
@@ -30,6 +34,7 @@ public class IssuerService : IIssuerService
             citizenDTO.PublicKey
         );
 
+        _logger.LogInformation("Trying to generate jwt");
         var jwt = _jwtGenerator.GenerateJwt(citizen);  // generates signed jwt
 
 
