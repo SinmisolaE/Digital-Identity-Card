@@ -26,7 +26,9 @@ builder.Logging.AddSerilog();
 
 builder.Services.AddScoped<IIssuerService, IssuerService>();
 builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
-builder.Services.AddScoped<IRsaKeyService, RsaKeyService>();
+
+builder.Services.AddSingleton<IRsaKeyService, RsaKeyService>();
+//builder.Services.AddScoped<IRsaKeyService, RsaKeyService>();
 
 var app = builder.Build();
 
