@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/TrustRegistry/TrustRegistry.Core/TrustRegistry.Core.csproj",
-      "projectName": "TrustRegistry.Core",
-      "projectPath": "/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/TrustRegistry/TrustRegistry.Core/TrustRegistry.Core.csproj",
+      "projectUniqueName": "/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/TrustRegistry/TrustRegistry.Core/TrustRegistryService.Core.csproj",
+      "projectName": "TrustRegistryService.Core",
+      "projectPath": "/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/TrustRegistry/TrustRegistry.Core/TrustRegistryService.Core.csproj",
       "packagesPath": "/home/sola_g/.nuget/packages/",
       "outputPath": "/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/TrustRegistry/TrustRegistry.Core/obj/",
       "projectStyle": "PackageReference",
