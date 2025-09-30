@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Exte
 using System.Text.Json;
 using Verifier.Core.DTO;
 using Verifier.Core.Entity;
@@ -9,9 +10,9 @@ namespace Verifier.Core.Services;
 
 public class VerifierService : IVerifierService
 {
-    private readonly ILogger<VerifierService> _logger;
-
     private readonly ITrustRegistryClient _trustRegistry;
+
+    private readonly ILogger<TrustRegistry> _logger;
 
     public VerifierService(ILogger<VerifierService> logger, ITrustRegistryClient trustRegistry)
     {
@@ -44,10 +45,7 @@ public class VerifierService : IVerifierService
 
 
 
-        if (validateJwt(jwtDTO.Jwt, registry.PublicKey))
-        {
-            
-        }
+        
 
         
     }
