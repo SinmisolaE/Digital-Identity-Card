@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/TrustRegistryService.API.props" />
+</Project>

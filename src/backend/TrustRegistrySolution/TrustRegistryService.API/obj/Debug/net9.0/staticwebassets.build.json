@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "nVM4EIE+IPWrJIqRq4FCMgqAfveqexpUOy86qtAV7Yo=",
+  "Source": "TrustRegistryService.API",
+  "BasePath": "_content/TrustRegistryService.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
