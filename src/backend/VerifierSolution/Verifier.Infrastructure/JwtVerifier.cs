@@ -29,7 +29,7 @@ public class JwtVerifier : IJwtVerifier
 
         var (header, payload, signature) = ParseJwt(jwt);
 
-        var publicKey = LoadPublicKey(publicKeyPem);
+        RSA publicKey = LoadPublicKey(publicKeyPem);
 
         if (!VerifySignature(header, payload, signature, publicKey))
             throw new Exception("Invalid JWT signature");
@@ -134,9 +134,13 @@ public class JwtVerifier : IJwtVerifier
     private RSA LoadPublicKey(string publicKeyPem)
     {
         _logger.LogInformation("Loading public key");
+        
 
         RSA rsa = RSA.Create();
         rsa.ImportFromPem(publicKeyPem);
+
+        //rsa.ImportFromPem("-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2ZEy49hl+qHTCoe0FJvT\nQ9PEevCw/4jJ93H9I0jVw1KQLpVFwkuakVT5WMKd7/mRmci4w03BMHmeqkDclkiT\nyApvFGHn0ebc2MT4/qLydwu+nQ09uYOWDchBkcC29UC4UjAl0rcozupEZ3SMd+PB\n11JMUTPW54S58WDHPVoUFau8jvOMXjgeNlqCakfdGevFzlVYLtTGCbRTtve9DoBJ\n8UZr84yi0JeeRWO7aIsmRkAk7bOlw71JAWrlBge4ghdHH+gMVUcba3kYDOdnRXTW\nZoxZcE+HILWTAuMVZsvAcx10patIBttISYoz3jf5wX2TO9O0x8cHLUzaf+JMOSrS\nMQIDAQAB\n-----END PUBLIC KEY-----");
+
 
         return rsa;
     }
