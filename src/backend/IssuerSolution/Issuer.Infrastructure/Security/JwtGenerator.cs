@@ -12,33 +12,41 @@ namespace Issuer.Infrastructure;
 
 public class JwtGenerator : IJwtGenerator
 {
-    private readonly RsaSecurityKey _privateKey;
+    private readonly IRsaKeyService _rsa;
 
-    private readonly string _privateKeyPem;
+    //Using Lazy initialization
+    private readonly Lazy<RsaSecurityKey> _privateKey;
 
-    private readonly string _publicKeyPem;
+    private readonly Lazy<string> _privateKeyPem;
+
+    private readonly Lazy<Task<string>> _publicKeyPem;
     private readonly ILogger<JwtGenerator> _logger;
 
 
     public JwtGenerator(IRsaKeyService rsa, ILogger<JwtGenerator> logger)
     {
-        _privateKey = rsa.GetPrivateKey();
-        _privateKeyPem = rsa.GetPrivateKeyPem();
-        _publicKeyPem = rsa.GetPublicKeyPem();
+        _rsa = rsa;
+
+        _privateKey = new Lazy<RsaSecurityKey>(() => rsa.GetPrivateKey());
+        _privateKeyPem = new Lazy<string>(() => rsa.GetPrivateKeyPem());
+        _publicKeyPem = new Lazy<Task<string>>(async () => await rsa.GetPublicKeyPem());
         _logger = logger;
     }
 
     // Generate jwt for citizen details
-    public string GenerateJwt(Citizen citizen)
+    public async Task<string> GenerateJwtAsync(Citizen citizen)
     {
         _logger.LogInformation("Trying to generate jwt");
         var tokenHandler = new JwtSecurityTokenHandler();
 
-
+        var publicKey = await _publicKeyPem.Value;
 
         System.Console.WriteLine();
-        System.Console.WriteLine($"Private: {_privateKeyPem}");
-        System.Console.WriteLine($"Public: {_publicKeyPem}");
+        System.Console.WriteLine($"Private: {_privateKeyPem.Value}");
+        System.Console.WriteLine();
+        System.Console.WriteLine();
+
+        System.Console.WriteLine($"Public: {publicKey}");
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
@@ -60,7 +68,7 @@ public class JwtGenerator : IJwtGenerator
 
 
 
-            SigningCredentials = new SigningCredentials(_privateKey, SecurityAlgorithms.RsaSha256)
+            SigningCredentials = new SigningCredentials(_privateKey.Value, SecurityAlgorithms.RsaSha256)
 
 
         };

@@ -5,6 +5,6 @@ namespace Verifier.Core.Interfaces;
 
 public interface ITrustRegistryClient
 {
-    Task<string> GetRegistryByIssuerAsync(string issuer);
+    Task<RegistryDTO> GetRegistryByIssuerAsync(string issuer);
 
 }

@@ -15,4 +15,11 @@ public class TrustRegistry
 
     [Required]
     public SetStatus Status = SetStatus.Active;
+
+    public TrustRegistry(string issuerId, string publicKey, SetStatus status)
+    {
+        IssuerId = issuerId;
+        PublicKey = publicKey;
+        Status = status;
+    }
 }

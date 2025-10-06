@@ -1,4 +1,5 @@
 using Issuer.API.DTO;
+using Issuer.Core.DTO;
 using Issuer.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +17,32 @@ namespace Issuer.API.Controllers
         {
             _issuerService = issuerService;
             _logger = logger;
+            
+            System.Console.WriteLine("In constructor");
         }
 
-        [HttpPost]
-        public ActionResult<string> CreateCitizen(CitizenDTO citizenDTO)
+        [HttpPost("try")]
+        public ActionResult<string> Try(string name)
         {
+            System.Console.WriteLine($"{name}");
+
+            return Ok($"{name}");
+        }
+
+        [HttpGet]
+        public ActionResult<string> Do()
+        {
+            return Ok("Hello");
+        }
+
+        
+        [HttpPost("issue")]
+        public async Task<IActionResult> CreateCitizenAsync(CitizenDTO citizenDTO)
+        {
+            System.Console.WriteLine("hellooo");
             try
             {
+                System.Console.WriteLine("started here");
                 _logger.LogInformation("Trying to create citizen's digital version");
                 if (citizenDTO == null)
                 {
@@ -30,7 +50,7 @@ namespace Issuer.API.Controllers
                     throw new ArgumentNullException("Citizen's details not provided");
                 }
 
-                string jwt = _issuerService.CreateCitizen(citizenDTO);
+                string jwt = await _issuerService.CreateCitizenAsync(citizenDTO);
 
                 _logger.LogInformation("jwt is being sent");
 
@@ -44,9 +64,9 @@ namespace Issuer.API.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"Errorrr: {e.Message}");
+                _logger.LogError($"{e.Message}");
 
-                return BadRequest("Error: " + e.Message);
+                return BadRequest(e.Message);
             }
             
         }

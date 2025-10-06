@@ -6,7 +6,7 @@ namespace Issuer.Core.Interfaces;
 
 public interface IIssuerService
 {
-    string CreateCitizen(CitizenDTO citizenDTO);
+    Task<string> CreateCitizenAsync(CitizenDTO citizenDTO);
 
     // would be used in giving citizen a new ID card, say it expires
     Task DeleteCitizen(CitizenDTO citizenDTO); //deletes the citizen national ID from db not implemented for now.

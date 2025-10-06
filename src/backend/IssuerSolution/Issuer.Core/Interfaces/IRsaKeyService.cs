@@ -10,7 +10,7 @@ public interface IRsaKeyService
     */
     RsaSecurityKey GetPrivateKey();
 
-    string GetPublicKeyPem();
+    Task<string> GetPublicKeyPem();
     string GetPrivateKeyPem();
 
 

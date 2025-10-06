@@ -6,5 +6,7 @@ namespace Verifier.Core.DTO;
 public class JwtDTO
 {
     [Required]
-    string Jwt { get; init; } = string.Empty;
+    public string Jwt { get; init; } = string.Empty;
+
+
 }

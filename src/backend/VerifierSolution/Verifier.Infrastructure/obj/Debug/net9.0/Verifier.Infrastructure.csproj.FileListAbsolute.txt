@@ -1,0 +1,16 @@
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.Infrastructure.csproj.AssemblyReference.cache
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.Infrastructure.AssemblyInfoInputs.cache
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.Infrastructure.AssemblyInfo.cs
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.Infrastructure.csproj.CoreCompileInputs.cache
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.Infrastructure.sourcelink.json
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/bin/Debug/net9.0/Verifier.Infrastructure.deps.json
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/bin/Debug/net9.0/Verifier.Infrastructure.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/bin/Debug/net9.0/Verifier.Infrastructure.pdb
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/bin/Debug/net9.0/Verifier.Core.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/bin/Debug/net9.0/Verifier.Core.pdb
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.0A8E0E00.Up2Date
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.Infrastructure.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/refint/Verifier.Infrastructure.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/Verifier.Infrastructure.pdb
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.Infrastructure/obj/Debug/net9.0/ref/Verifier.Infrastructure.dll

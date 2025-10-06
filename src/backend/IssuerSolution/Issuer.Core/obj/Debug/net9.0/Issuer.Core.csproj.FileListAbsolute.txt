@@ -11,3 +11,16 @@
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/Issuer/Issuer.Core/obj/Debug/net9.0/refint/Issuer.Core.dll
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/Issuer/Issuer.Core/obj/Debug/net9.0/Issuer.Core.pdb
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/Issuer/Issuer.Core/obj/Debug/net9.0/ref/Issuer.Core.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/bin/Debug/net9.0/Issuer.Core.deps.json
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/bin/Debug/net9.0/Issuer.Core.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/bin/Debug/net9.0/Issuer.Core.pdb
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/Issuer.Core.csproj.AssemblyReference.cache
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/Issuer.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/Issuer.Core.AssemblyInfoInputs.cache
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/Issuer.Core.AssemblyInfo.cs
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/Issuer.Core.csproj.CoreCompileInputs.cache
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/Issuer.Core.sourcelink.json
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/Issuer.Core.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/refint/Issuer.Core.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/Issuer.Core.pdb
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Core/obj/Debug/net9.0/ref/Issuer.Core.dll

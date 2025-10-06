@@ -54,6 +54,13 @@ public class RegistryService : IRegistryService
 
         try
         {
+            
+            //check if issuer exists
+            var confirmIssuer = await _repository.GetRegistryByIssuerAsync(registry.IssuerId);
+
+            System.Console.WriteLine($"Truing: {confirmIssuer?.IssuerId}");
+            if (confirmIssuer != null) return true;
+            
             //Try to add to db, if issuerId exists, catch exception
             var response = await _repository.AddRegistryAsync(registry);
 

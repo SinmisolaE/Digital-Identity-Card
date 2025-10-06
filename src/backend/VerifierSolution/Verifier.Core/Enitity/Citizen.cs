@@ -20,6 +20,7 @@ public class Citizen
         PublicKey = publicKey;
     }
 
+
     [Required]
     public string FirstName { get; set; } = string.Empty;
 

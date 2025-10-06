@@ -4,6 +4,6 @@ namespace Issuer.Core.Interfaces;
 
 public interface IJwtGenerator
 {
-    string GenerateJwt(Citizen citizen);
+    Task<string> GenerateJwtAsync(Citizen citizen);
 
 }

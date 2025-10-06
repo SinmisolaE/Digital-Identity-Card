@@ -17,7 +17,7 @@ public class IssuerService : IIssuerService
         _logger = logger;
     }
 
-    public string CreateCitizen(CitizenDTO citizenDTO)
+    public async Task<string> CreateCitizenAsync(CitizenDTO citizenDTO)
     {
         _logger.LogInformation("Started creating citizen digital card");
 
@@ -34,8 +34,7 @@ public class IssuerService : IIssuerService
             citizenDTO.PublicKey
         );
 
-        _logger.LogInformation("Trying to generate jwt");
-        var jwt = _jwtGenerator.GenerateJwt(citizen);  // generates signed jwt
+        var jwt = await _jwtGenerator.GenerateJwtAsync(citizen);  // generates signed jwt
 
 
         return jwt;

@@ -14,8 +14,15 @@ Log.Logger = new LoggerConfiguration()
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer(); // ← For Minimal APIs
+
+
+//builder.Logging.ClearProviders();
+
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+//builder.Services.AddOpenApi();
 
 builder.Services.AddSwaggerGen();
 
@@ -30,20 +37,29 @@ builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 builder.Services.AddSingleton<IRsaKeyService, RsaKeyService>();
 //builder.Services.AddScoped<IRsaKeyService, RsaKeyService>();
 
+builder.Services.AddHttpClient();
+
+//add registry to db
+builder.Services.AddHttpClient<ITrustRegistryClient, TrustRegistryClient>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    //app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection(); 
+
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGet("/test", () => "Test working!");
+
 
 app.Run();
