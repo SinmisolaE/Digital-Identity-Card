@@ -392,3 +392,66 @@
 2025-10-06 16:45:04.791 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
 2025-10-06 16:45:04.795 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/Issuer/issue - 200 null text/plain; charset=utf-8 6974.5445ms
 2025-10-06 16:46:54.326 +00:00 [INF] Application is shutting down...
+2025-10-07 22:28:11.847 +00:00 [INF] Now listening on: http://localhost:5142
+2025-10-07 22:28:13.347 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-07 22:28:13.350 +00:00 [INF] Hosting environment: Development
+2025-10-07 22:28:13.350 +00:00 [INF] Content root path: /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.API
+2025-10-07 23:43:53.345 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - null null
+2025-10-07 23:43:53.339 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.css - null null
+2025-10-07 23:43:53.339 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.html - null null
+2025-10-07 23:43:53.339 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/favicon-16x16.png - null null
+2025-10-07 23:43:53.339 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui.css - null null
+2025-10-07 23:43:57.512 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.html - 499 null text/html;charset=utf-8 4477.5756ms
+2025-10-07 23:43:57.888 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/favicon-16x16.png - 499 665 image/png 4853.6425ms
+2025-10-07 23:43:57.889 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui.css - 499 23647 text/css 4857.0541ms
+2025-10-07 23:43:57.889 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.css - 499 152 text/css 4857.8052ms
+2025-10-07 23:43:58.753 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 5721.4808ms
+2025-10-07 23:44:11.556 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/api/Issuer - null null
+2025-10-07 23:44:11.572 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.Do (Issuer.API)'
+2025-10-07 23:44:11.699 +00:00 [INF] Route matched with {action = "Do", controller = "Issuer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] Do() on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-07 23:44:11.851 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-10-07 23:44:11.860 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.Do (Issuer.API) in 151.7889ms
+2025-10-07 23:44:11.861 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.Do (Issuer.API)'
+2025-10-07 23:44:11.861 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/api/Issuer - 200 null text/plain; charset=utf-8 305.0898ms
+2025-10-07 23:48:10.818 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/api/issuer - null null
+2025-10-07 23:48:10.819 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.Do (Issuer.API)'
+2025-10-07 23:48:10.820 +00:00 [INF] Route matched with {action = "Do", controller = "Issuer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] Do() on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-07 23:48:10.833 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-10-07 23:48:10.834 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.Do (Issuer.API) in 13.8308ms
+2025-10-07 23:48:10.834 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.Do (Issuer.API)'
+2025-10-07 23:48:10.834 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/api/issuer - 200 null text/plain; charset=utf-8 15.712ms
+2025-10-07 23:48:34.039 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/test - null null
+2025-10-07 23:48:34.041 +00:00 [INF] Executing endpoint 'HTTP: GET /test'
+2025-10-07 23:48:34.042 +00:00 [INF] Executed endpoint 'HTTP: GET /test'
+2025-10-07 23:48:34.070 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/test - 200 null text/plain; charset=utf-8 30.6042ms
+2025-10-07 23:49:28.784 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/api/issuer/issue - application/json 291
+2025-10-07 23:49:28.785 +00:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-07 23:49:28.787 +00:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-07 23:49:28.787 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/api/issuer/issue - 405 0 null 3.1719ms
+2025-10-07 23:49:28.792 +00:00 [INF] Connection id "0HNG5VDEK2356", Request id "0HNG5VDEK2356:00000003": the application completed without reading the entire request body.
+2025-10-07 23:49:45.113 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/api/issuer/issue - application/json 291
+2025-10-07 23:49:45.116 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-07 23:49:45.199 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-07 23:49:45.484 +00:00 [INF] Trying to create citizen's digital version
+2025-10-07 23:49:45.492 +00:00 [INF] Started creating citizen digital card
+2025-10-07 23:49:45.685 +00:00 [INF] Trying to generate jwt
+2025-10-07 23:49:45.780 +00:00 [INF] Trying to get public key string
+2025-10-07 23:49:46.412 +00:00 [INF] Contacting registry
+2025-10-07 23:49:46.416 +00:00 [INF] Ensuring if issuer is registered
+2025-10-07 23:49:46.418 +00:00 [INF] Issuer not added prior! Trying to add it now
+2025-10-07 23:49:46.440 +00:00 [INF] Trying to add registry
+2025-10-07 23:49:46.528 +00:00 [INF] Start processing HTTP request POST http://localhost:5051/register
+2025-10-07 23:49:46.530 +00:00 [INF] Sending HTTP request POST http://localhost:5051/register
+2025-10-07 23:50:07.496 +00:00 [INF] Received HTTP response headers after 20949.2541ms - 200
+2025-10-07 23:50:07.498 +00:00 [INF] End processing HTTP request after 21031.509ms - 200
+2025-10-07 23:50:07.501 +00:00 [INF] Registry added successfully
+2025-10-07 23:50:07.502 +00:00 [INF] Returning publickey string
+2025-10-07 23:50:07.503 +00:00 [INF] Trying to get private key string
+2025-10-07 23:50:07.514 +00:00 [INF] Trying to get private key
+2025-10-07 23:50:07.628 +00:00 [INF] JWT generated
+2025-10-07 23:50:07.629 +00:00 [INF] jwt is being sent
+2025-10-07 23:50:07.634 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-10-07 23:50:07.638 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 22438.4354ms
+2025-10-07 23:50:07.641 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-07 23:50:07.646 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/issuer/issue - 200 null text/plain; charset=utf-8 22533.0943ms
+2025-10-07 23:51:56.419 +00:00 [INF] Application is shutting down...
