@@ -46,43 +46,51 @@ const Verify = () => {
 
     return (
 
-        
-        <div>
-            <div>
-                <div>
-                    <h2>Digital Identity Verification System</h2>
-                </div>
 
-                <div>
-                    {!verificationUrl ? (
-                        <button 
-                        onClick={startVerification}
-                        disabled={loading}
-                        >
-                            {loading ? 'Starting' : 'Start Verification'}
-                        </button>
-                        ) : (
-                            <div>
-                            <div className="mb-4 p-3 bg-white rounded border">
-                                <QRCodeCanvas
-                                    value={JSON.stringify({
-                                        url: verificationUrl,
-                                        nonce: nonce
-                                    })}
-                                    size={200}
-                                    level="M"
-                                    includeMargin
-                                    />
+
+        <div className="min-vh-100 d-flex align-items-center">
+
+        <div className="container-fluid bg-primary">
+            <div className="justify-content-center">
+                <div className="col-md-6 col-lg-5">
+
+                
+                    <div className="">
+                        <h2>Digital Identity Verification System</h2>
+                    </div>
+
+                    <div>
+                        {!verificationUrl ? (
+                            <button 
+                            onClick={startVerification}
+                            disabled={loading}
+                            >
+                                {loading ? 'Starting' : 'Start Verification'}
+                            </button>
+                            ) : (
+                                <div>
+                                <div className="mb-4 p-3 bg-white rounded border">
+                                    <QRCodeCanvas
+                                        value={JSON.stringify({
+                                            url: verificationUrl,
+                                            nonce: nonce
+                                        })}
+                                        size={200}
+                                        level="M"
+                                        includeMargin
+                                        />
+                                </div>
                             </div>
-                        </div>
-                    )
-                    
-                }
-                    
+                        )
+                        
+                    }
+                        
+                    </div>
                 </div>
             </div>
         </div>
     
+        </div>
     )
     
 }

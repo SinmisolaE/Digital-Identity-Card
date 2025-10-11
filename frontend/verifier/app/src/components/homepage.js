@@ -46,44 +46,77 @@ const Homepage = () => {
     }
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
+        <div className="min-vh-100 d-flex align-items-center bg-background">
 
-            <div className="text-center mb-4">
-                <h2 className="text pt-5">Digital Identity Verification System</h2>
-            </div>
+        <div className="container-fluid ">
+            <div className="row justify-content-center ">
+                <div className="col-md-6 col-lg-5">
 
-            <div className="card ">
-                <h2>Login</h2>
-                <form onSubmit={handleSubmit}>
-                    <div>
-
-                        <label>Email</label>
-                        <input type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)} 
-                        />
+                  <div className="card shadow-lg">
+                    <div className="card-body p-5">
+                    <div className="text-center mb-4">
+                        <h1 className="mb-2">Verifier Portal</h1>
+                        <p className="text-muted">Digital Identity Verification System</p>
                     </div>
 
-                    <div>
-                        <label>Password</label>
-                        <input 
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
+                    {error && (
+                        <div className="alert alert-danger">{error}</div>
+                    )}
+                
 
-                    <div>
-                        <button type="submit">Submit</button>
-                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
 
-                </form>
+                            <label
+                                className="form-label"
+                            >
+                                Email
+                            </label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)} 
+                                className="form-control "
+                                placeholder="name@example.com"
+                                required
+                            />
+                        </div>
+
+                        <div className="mb-4">
+                            <label
+                                className="form-label"
+                            >
+                                Password
+                            </label>
+                            <input 
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="form-control"
+                                placeholder="Enter your password"
+                                required
+
+                            />
+                        </div>
+
+                        <div className="">
+                            <button type="submit"
+                                className="btn btn-primary mb-3 w-100"
+                            >
+                                Sign In
+                            </button>
+                        </div>
+
+                    </form>
+                    </div>
+                </div>
                 </div>
             </div>
 
 
         </div>
+        </div>
+
     )
 };
 
