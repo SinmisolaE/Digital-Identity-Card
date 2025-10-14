@@ -455,3 +455,85 @@
 2025-10-07 23:50:07.641 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
 2025-10-07 23:50:07.646 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/issuer/issue - 200 null text/plain; charset=utf-8 22533.0943ms
 2025-10-07 23:51:56.419 +00:00 [INF] Application is shutting down...
+2025-10-14 20:53:08.294 +00:00 [INF] Now listening on: http://localhost:5142
+2025-10-14 20:53:08.452 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-14 20:53:08.455 +00:00 [INF] Hosting environment: Development
+2025-10-14 20:53:08.455 +00:00 [INF] Content root path: /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.API
+2025-10-14 21:03:45.051 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.html - null null
+2025-10-14 21:03:45.416 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.html - 200 null text/html;charset=utf-8 368.1489ms
+2025-10-14 21:03:56.509 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui.css - null null
+2025-10-14 21:03:56.838 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.css - null null
+2025-10-14 21:03:59.239 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.css - 200 152 text/css 2400.2338ms
+2025-10-14 21:03:59.239 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui.css - 200 23647 text/css 2731.324ms
+2025-10-14 21:04:00.770 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui-bundle.js - null null
+2025-10-14 21:04:00.770 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui-standalone-preset.js - null null
+2025-10-14 21:04:01.403 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.js - null null
+2025-10-14 21:04:01.405 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.js - 200 null application/javascript;charset=utf-8 1.9037ms
+2025-10-14 21:04:01.428 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui-standalone-preset.js - 304 null null 658.1737ms
+2025-10-14 21:04:01.433 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui-bundle.js - 304 null null 662.9881ms
+2025-10-14 21:04:04.057 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/favicon-16x16.png - null null
+2025-10-14 21:04:04.060 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/favicon-16x16.png - 200 665 image/png 3.5287ms
+2025-10-14 21:04:06.019 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - null null
+2025-10-14 21:04:06.254 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 234.2671ms
+2025-10-14 21:04:45.876 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/api/Issuer/issue - application/json 291
+2025-10-14 21:04:45.946 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-14 21:04:46.021 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-14 21:04:46.142 +00:00 [INF] Trying to create citizen's digital version
+2025-10-14 21:04:46.144 +00:00 [INF] Started creating citizen digital card
+2025-10-14 21:04:46.179 +00:00 [INF] Trying to generate jwt
+2025-10-14 21:04:46.284 +00:00 [INF] Trying to get public key string
+2025-10-14 21:04:46.755 +00:00 [INF] Contacting registry
+2025-10-14 21:04:46.757 +00:00 [INF] Ensuring if issuer is registered
+2025-10-14 21:04:46.758 +00:00 [INF] Issuer not added prior! Trying to add it now
+2025-10-14 21:04:46.824 +00:00 [INF] Trying to add registry
+2025-10-14 21:04:46.862 +00:00 [INF] Start processing HTTP request POST http://localhost:5051/register
+2025-10-14 21:04:46.864 +00:00 [INF] Sending HTTP request POST http://localhost:5051/register
+2025-10-14 21:04:46.943 +00:00 [ERR] Error from db: Connection refused (localhost:5051)
+2025-10-14 21:04:46.954 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2025-10-14 21:04:46.964 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 934.325ms
+2025-10-14 21:04:46.966 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-14 21:04:46.969 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/Issuer/issue - 400 null text/plain; charset=utf-8 1093.8859ms
+2025-10-14 21:04:59.792 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/api/Issuer/issue - application/json 291
+2025-10-14 21:04:59.795 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-14 21:04:59.795 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-14 21:04:59.798 +00:00 [INF] Trying to create citizen's digital version
+2025-10-14 21:04:59.798 +00:00 [INF] Started creating citizen digital card
+2025-10-14 21:04:59.798 +00:00 [INF] Trying to generate jwt
+2025-10-14 21:04:59.799 +00:00 [INF] Trying to get public key string
+2025-10-14 21:04:59.800 +00:00 [INF] Contacting registry
+2025-10-14 21:04:59.801 +00:00 [INF] Ensuring if issuer is registered
+2025-10-14 21:04:59.801 +00:00 [INF] Issuer not added prior! Trying to add it now
+2025-10-14 21:04:59.802 +00:00 [INF] Trying to add registry
+2025-10-14 21:04:59.803 +00:00 [INF] Start processing HTTP request POST http://localhost:5051/register
+2025-10-14 21:04:59.804 +00:00 [INF] Sending HTTP request POST http://localhost:5051/register
+2025-10-14 21:04:59.813 +00:00 [ERR] Error from db: Connection refused (localhost:5051)
+2025-10-14 21:04:59.813 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2025-10-14 21:04:59.814 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 18.6276ms
+2025-10-14 21:04:59.814 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-14 21:04:59.815 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/Issuer/issue - 400 null text/plain; charset=utf-8 22.5554ms
+2025-10-14 21:06:59.761 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/api/Issuer/issue - application/json 291
+2025-10-14 21:06:59.813 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-14 21:06:59.814 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-14 21:06:59.818 +00:00 [INF] Trying to create citizen's digital version
+2025-10-14 21:06:59.819 +00:00 [INF] Started creating citizen digital card
+2025-10-14 21:06:59.819 +00:00 [INF] Trying to generate jwt
+2025-10-14 21:06:59.820 +00:00 [INF] Trying to get public key string
+2025-10-14 21:06:59.821 +00:00 [INF] Contacting registry
+2025-10-14 21:06:59.821 +00:00 [INF] Ensuring if issuer is registered
+2025-10-14 21:06:59.822 +00:00 [INF] Issuer not added prior! Trying to add it now
+2025-10-14 21:06:59.822 +00:00 [INF] Trying to add registry
+2025-10-14 21:06:59.822 +00:00 [INF] Start processing HTTP request POST http://localhost:5051/register
+2025-10-14 21:06:59.823 +00:00 [INF] Sending HTTP request POST http://localhost:5051/register
+2025-10-14 21:07:11.918 +00:00 [INF] Received HTTP response headers after 12069.7859ms - 200
+2025-10-14 21:07:11.919 +00:00 [INF] End processing HTTP request after 12095.764ms - 200
+2025-10-14 21:07:11.921 +00:00 [INF] Registry added successfully
+2025-10-14 21:07:11.921 +00:00 [INF] Returning publickey string
+2025-10-14 21:07:11.922 +00:00 [INF] Trying to get private key string
+2025-10-14 21:07:11.933 +00:00 [INF] Trying to get private key
+2025-10-14 21:07:12.014 +00:00 [INF] JWT generated
+2025-10-14 21:07:12.014 +00:00 [INF] jwt is being sent
+2025-10-14 21:07:12.014 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-10-14 21:07:12.015 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 12200.6795ms
+2025-10-14 21:07:12.015 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-14 21:07:12.015 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/Issuer/issue - 200 null text/plain; charset=utf-8 12253.9664ms
+2025-10-14 21:35:42.094 +00:00 [INF] Application is shutting down...

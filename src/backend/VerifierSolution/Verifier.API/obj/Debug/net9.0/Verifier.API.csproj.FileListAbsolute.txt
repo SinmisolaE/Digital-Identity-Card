@@ -54,3 +54,5 @@
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/obj/Debug/net9.0/Verifier.API.pdb
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/obj/Debug/net9.0/Verifier.API.genruntimeconfig.cache
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/obj/Debug/net9.0/ref/Verifier.API.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll

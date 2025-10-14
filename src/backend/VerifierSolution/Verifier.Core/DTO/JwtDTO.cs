@@ -8,5 +8,7 @@ public class JwtDTO
     [Required]
     public string Jwt { get; init; } = string.Empty;
 
+    public string nonce { get; init; } = string.Empty;
+
 
 }

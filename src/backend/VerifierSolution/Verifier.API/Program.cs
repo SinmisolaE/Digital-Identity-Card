@@ -14,10 +14,16 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Logging.AddSerilog();
 
+builder.Services.AddHealthChecks();
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddSwaggerGen();
 
+
+//Add memory cache for nonce
+builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<INonceService, NonceService>();
 
 //HttpClient to request from TrustRegistry
 builder.Services.AddHttpClient();
@@ -28,6 +34,8 @@ builder.Services.AddHttpClient<ITrustRegistryClient, TrustRegistryClient>(client
     //client.DefaultRequestHeaders.Add("Accept", "application/json");
 }
 );
+
+
 
 builder.Services.AddScoped<IVerifierService, VerifierService>();
 
@@ -48,5 +56,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/health");
 
 app.Run();

@@ -6,4 +6,6 @@ namespace Verifier.Core.Interfaces;
 public interface IVerifierService
 {
     Task<CitizenDTO> GetCitizenAsync(JwtDTO jwtDTO);
+
+    string GetUrl();
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrustRegistryService.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f97804281c2c2442de1d92999bee7fb0c7bbd906")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02fee157d7c4ca4210f0e335e5521732f029a7f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrustRegistryService.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrustRegistryService.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

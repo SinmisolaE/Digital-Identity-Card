@@ -6,12 +6,6 @@ namespace Verifier.Core.DTO;
 
 public class CitizenDTO
 {
-    private Citizen citizen;
-
-    public CitizenDTO(Citizen citizen)
-    {
-        this.citizen = citizen;
-    }
 
     public CitizenDTO(string firstName, string lastName, string otherNames, string nationalIdNumber, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate, string publicKey)
     {

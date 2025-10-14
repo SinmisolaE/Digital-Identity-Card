@@ -31,13 +31,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Verifier.Core", "src\backen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Verifier.Infrastructure", "src\backend\VerifierSolution\Verifier.Infrastructure\Verifier.Infrastructure.csproj", "{34845604-DA1D-4280-ACC1-8941E518313F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{CCCEAA7E-BE5D-85D8-EBF7-90E373647E94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.API", "src\backend\Gateway\Gateway.API\Gateway.API.csproj", "{E9E17DAF-869C-48DB-BBFD-6D3CE89DB9B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{95F19174-CCFD-4717-AD78-B14CBBF4D456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -76,6 +77,13 @@ Global
 		{34845604-DA1D-4280-ACC1-8941E518313F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34845604-DA1D-4280-ACC1-8941E518313F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34845604-DA1D-4280-ACC1-8941E518313F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9E17DAF-869C-48DB-BBFD-6D3CE89DB9B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9E17DAF-869C-48DB-BBFD-6D3CE89DB9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9E17DAF-869C-48DB-BBFD-6D3CE89DB9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E17DAF-869C-48DB-BBFD-6D3CE89DB9B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8BF30212-DAD7-4236-84CA-EE725DA0F519} = {72DFC0B5-36BE-435E-9AF8-B51374A4A37F}
@@ -91,5 +99,7 @@ Global
 		{E1358852-0749-41F8-B181-86FDE94E742A} = {062D97DC-4FEF-4D4C-9B76-B1D4206CCE17}
 		{F1A6C588-BE77-4787-AA26-16240E0A3C96} = {062D97DC-4FEF-4D4C-9B76-B1D4206CCE17}
 		{34845604-DA1D-4280-ACC1-8941E518313F} = {062D97DC-4FEF-4D4C-9B76-B1D4206CCE17}
+		{CCCEAA7E-BE5D-85D8-EBF7-90E373647E94} = {8BF30212-DAD7-4236-84CA-EE725DA0F519}
+		{E9E17DAF-869C-48DB-BBFD-6D3CE89DB9B2} = {CCCEAA7E-BE5D-85D8-EBF7-90E373647E94}
 	EndGlobalSection
 EndGlobal

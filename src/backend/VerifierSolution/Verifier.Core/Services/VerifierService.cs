@@ -16,13 +16,13 @@ public class VerifierService : IVerifierService
     private readonly ILogger<TrustRegistry> _logger;
 
     private readonly IJwtVerifier _jwtVerifier;
+
     public VerifierService(ITrustRegistryClient trustRegistry, IJwtVerifier jwtVerifier, ILogger<TrustRegistry> logger)
     {
         _logger = logger;
         _trustRegistry = trustRegistry;
         _jwtVerifier = jwtVerifier;
     }
-    
 
     public async Task<CitizenDTO> GetCitizenAsync(JwtDTO jwtDTO)
     {
@@ -74,4 +74,11 @@ public class VerifierService : IVerifierService
         _logger.LogInformation("return citizen");
         return citizenDTO;
     }
+
+    public string GetUrl()
+    {
+        _logger.LogInformation("Url to verify credentials which client comminucates to passed");
+        return "http://localhost:5091/verifier/verify/";
+    }
+
 }

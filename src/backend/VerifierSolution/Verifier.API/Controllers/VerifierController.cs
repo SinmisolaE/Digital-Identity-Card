@@ -1,3 +1,4 @@
+using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Verifier.Core.DTO;
@@ -10,11 +11,15 @@ namespace Verifier.API.Controllers
     public class VerifierController : ControllerBase
     {
         private readonly IVerifierService _service;
+        private readonly INonceService _nonceService;
+
         private readonly ILogger<VerifierController> _logger;
 
-        public VerifierController(IVerifierService service, ILogger<VerifierController> logger)
+        public VerifierController(IVerifierService service, ILogger<VerifierController> logger, INonceService nonceService)
         {
             _service = service;
+            _nonceService = nonceService;
+
 
             _logger = logger;
         }
@@ -25,6 +30,14 @@ namespace Verifier.API.Controllers
             _logger.LogInformation("Into verify function");
             try
             {
+                _logger.LogInformation("Ensure nonce challenge is correct");
+                var response = _nonceService.IsValid(jwtDTO.nonce);
+
+                if (!response)
+                {
+                    return BadRequest("Connection requirements not met for secure communication");
+                }
+
                 _logger.LogInformation("Trying verify service");
                 var citizenDTO = await _service.GetCitizenAsync(jwtDTO);
 
@@ -38,5 +51,32 @@ namespace Verifier.API.Controllers
                 return BadRequest($"Error: {ex.Message}");
             }
         }
+
+        [HttpGet("/challenge")]
+        public ActionResult<string> GetChallengeAndVerifyUrl()
+        {
+            _logger.LogInformation("To get the nonce challenge");
+
+            try
+            {
+                var nonce = _nonceService.GenerateNonce();
+
+                var verificationUrl = _service.GetUrl();
+
+                return Ok(new
+                {
+                    success = true,
+                    nonce = nonce,
+                    verificationUrl = verificationUrl
+                });
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }
+        }
+        
+
     }
 }
