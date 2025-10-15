@@ -210,3 +210,125 @@
 2025-10-14 22:27:43.304 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 106.3244ms
 2025-10-14 22:27:43.304 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
 2025-10-14 22:27:43.304 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 225.7564ms
+2025-10-14 22:29:02.602 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:29:02.702 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:29:02.734 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:29:02.830 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:29:02.830 +00:00 [INF] Generating new nonce
+2025-10-14 22:29:02.843 +00:00 [INF] Nonce generated: 154dd29d66b048b99ed2f0540178e943
+2025-10-14 22:29:02.843 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:29:02.952 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:29:03.070 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 281.5364ms
+2025-10-14 22:29:03.070 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:29:03.082 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 497.3097ms
+2025-10-14 22:30:02.437 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:30:02.454 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:30:02.455 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:30:02.459 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:30:02.459 +00:00 [INF] Generating new nonce
+2025-10-14 22:30:02.459 +00:00 [INF] Nonce generated: 984a3dcc54244aa3a3ded8f06b4f5fe5
+2025-10-14 22:30:02.460 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:30:02.460 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:30:02.461 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 5.6465ms
+2025-10-14 22:30:02.467 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:30:02.470 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 32.7179ms
+2025-10-14 22:30:17.561 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:30:17.562 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:30:17.577 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:30:17.577 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:30:17.577 +00:00 [INF] Generating new nonce
+2025-10-14 22:30:17.577 +00:00 [INF] Nonce generated: 586d453a600441798021ce0ae039f493
+2025-10-14 22:30:17.577 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:30:17.584 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:30:17.632 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 54.9833ms
+2025-10-14 22:30:17.632 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:30:17.632 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 114.264ms
+2025-10-14 22:30:51.236 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:30:51.236 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:30:51.236 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:30:51.237 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:30:51.237 +00:00 [INF] Generating new nonce
+2025-10-14 22:30:51.237 +00:00 [INF] Nonce generated: ae69a9a476664ed3a7ed642c4b0efde9
+2025-10-14 22:30:51.237 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:30:51.237 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:30:51.266 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 29.2727ms
+2025-10-14 22:30:51.266 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:30:51.268 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 31.4696ms
+2025-10-14 22:31:27.442 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:31:27.443 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:31:27.443 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:31:27.444 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:31:27.449 +00:00 [INF] Generating new nonce
+2025-10-14 22:31:27.449 +00:00 [INF] Nonce generated: 4168d75513554b8f8d04a984f228f033
+2025-10-14 22:31:27.450 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:31:27.450 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:31:27.450 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 6.3341ms
+2025-10-14 22:31:27.450 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:31:27.450 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 8.4787ms
+2025-10-14 22:31:57.576 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:31:57.586 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:31:57.586 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:31:57.586 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:31:57.586 +00:00 [INF] Generating new nonce
+2025-10-14 22:31:57.587 +00:00 [INF] Nonce generated: 4c6f562c5f194d66bebb6fc03b3fc7fa
+2025-10-14 22:31:57.587 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:31:57.587 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:31:57.608 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 21.8802ms
+2025-10-14 22:31:57.608 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:31:57.609 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 32.826ms
+2025-10-14 22:35:50.504 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:35:50.553 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:35:50.553 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:35:50.554 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:35:50.554 +00:00 [INF] Generating new nonce
+2025-10-14 22:35:50.554 +00:00 [INF] Nonce generated: 0cc7d555c077415890a72b69d2293d38
+2025-10-14 22:35:50.554 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:35:50.554 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:35:50.654 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 100.0547ms
+2025-10-14 22:35:50.656 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:35:50.656 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 151.9628ms
+2025-10-14 22:36:05.261 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:36:05.261 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:36:05.262 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:36:05.262 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:36:05.262 +00:00 [INF] Generating new nonce
+2025-10-14 22:36:05.262 +00:00 [INF] Nonce generated: 46d7eda8f4df4cd8a99f868b2ce521e6
+2025-10-14 22:36:05.262 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:36:05.262 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:36:05.313 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 50.8612ms
+2025-10-14 22:36:05.313 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:36:05.314 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 53.3004ms
+2025-10-14 22:37:50.995 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:37:50.995 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:37:50.996 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:37:50.996 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:37:50.996 +00:00 [INF] Generating new nonce
+2025-10-14 22:37:50.996 +00:00 [INF] Nonce generated: d59e39769f7d492bb53e37d500521dd9
+2025-10-14 22:37:50.996 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:37:50.997 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:37:51.016 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 20.3046ms
+2025-10-14 22:37:51.016 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:37:51.016 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 21.6769ms
+2025-10-14 22:38:38.799 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:38:38.799 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:38:38.799 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:38:38.799 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:38:38.799 +00:00 [INF] Generating new nonce
+2025-10-14 22:38:38.799 +00:00 [INF] Nonce generated: 8df675d293374ddea2c0711032f3fc2b
+2025-10-14 22:38:38.799 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:38:38.801 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:38:38.801 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 2.1437ms
+2025-10-14 22:38:38.801 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:38:38.801 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 2.9621ms
+2025-10-14 22:50:25.744 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5101/challenge - null null
+2025-10-14 22:50:25.857 +00:00 [INF] Executing endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:50:25.884 +00:00 [INF] Route matched with {action = "GetChallengeAndVerifyUrl", controller = "Verifier"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] GetChallengeAndVerifyUrl() on controller Verifier.API.Controllers.VerifierController (Verifier.API).
+2025-10-14 22:50:25.885 +00:00 [INF] To get the nonce challenge
+2025-10-14 22:50:25.886 +00:00 [INF] Generating new nonce
+2025-10-14 22:50:25.886 +00:00 [INF] Nonce generated: 46b7f43111f348b8aaadf4ae57b82ad5
+2025-10-14 22:50:25.886 +00:00 [INF] Url to verify credentials which client comminucates to passed
+2025-10-14 22:50:25.887 +00:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-14 22:50:25.887 +00:00 [INF] Executed action Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API) in 2.6844ms
+2025-10-14 22:50:25.888 +00:00 [INF] Executed endpoint 'Verifier.API.Controllers.VerifierController.GetChallengeAndVerifyUrl (Verifier.API)'
+2025-10-14 22:50:25.888 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5101/challenge - 200 null application/json; charset=utf-8 144.0792ms
+2025-10-14 22:50:49.898 +00:00 [INF] Application is shutting down...

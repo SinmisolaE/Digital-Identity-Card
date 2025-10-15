@@ -20,6 +20,7 @@ const Verify = () => {
 
     const startVerification = async (e) => {
         setLoading(true);
+        setError('');
         setVerificationStatus('idle');
 
         try {
@@ -32,17 +33,21 @@ const Verify = () => {
             
             if (response.data.success) {
 
-                console.log(`COntent: ${response.data}\n\n`);
+                console.log(`COntent: ${response.data}\n`);
 
-                console.log(`Nonce from be: ${response.data.nonce}`);
+                console.log(`Nonce from be: ${response.data.nonce}\n\n`);
 
                 
 
                 const {nonce: newNonce, verificationUrl: url} = response.data;
 
-                setNonce(nonce);
-                setVerificationUrl(verificationUrl);
-                setVerificationStatus('pending');
+                setNonce(newNonce);
+                
+
+                setVerificationUrl(url);
+
+                console.log(newNonce);
+                console.log(url);
 
                 setVerificationStatus('waiting');
                 setPollingCount(0);
@@ -116,9 +121,9 @@ const Verify = () => {
 
                 <div className="container">
                     <span className="navbar-brand fw-bold text-primary ">Verifier Portal</span>
-                        <button className="btn btn-outline-danger" onClick={handleLogout}>
-                            Logout
-                        </button>
+                    <button className="btn btn-outline-danger" onClick={handleLogout}>
+                        Logout
+                    </button>
                 </div>
             </nav>
 
@@ -150,15 +155,15 @@ const Verify = () => {
                                     Click below to generate a Verification QR code
                                 </p>
                                 <div className="my-5">
-                            <button 
-                                onClick={startVerification}
-                                disabled={loading}
-                                
-                                className="btn btn-primary btn-lg px-5 py-4"
-                                >
-                                {loading ? 'Starting' : 'Start Verification'}
-                            </button>
-                            </div>
+                                    <button 
+                                        onClick={startVerification}
+                                        disabled={loading}
+                                        
+                                        className="btn btn-primary btn-lg px-5 py-4"
+                                        >
+                                        {loading ? 'Starting' : 'Start Verification'}
+                                    </button>
+                                </div>
                             </div>
                         )}
 
