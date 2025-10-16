@@ -537,3 +537,84 @@
 2025-10-14 21:07:12.015 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
 2025-10-14 21:07:12.015 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/api/Issuer/issue - 200 null text/plain; charset=utf-8 12253.9664ms
 2025-10-14 21:35:42.094 +00:00 [INF] Application is shutting down...
+2025-10-15 23:25:28.235 +00:00 [INF] Now listening on: http://localhost:5142
+2025-10-15 23:25:28.418 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-15 23:25:28.422 +00:00 [INF] Hosting environment: Development
+2025-10-15 23:25:28.423 +00:00 [INF] Content root path: /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.API
+2025-10-15 23:28:13.686 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.html - null null
+2025-10-15 23:28:13.686 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui.css - null null
+2025-10-15 23:28:13.686 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.js - null null
+2025-10-15 23:28:13.686 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.css - null null
+2025-10-15 23:28:13.799 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.html - 499 null text/html;charset=utf-8 116.5913ms
+2025-10-15 23:28:13.818 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.css - 499 152 text/css 137.9908ms
+2025-10-15 23:28:13.862 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/swagger-ui.css - 499 23647 text/css 182.03ms
+2025-10-15 23:28:13.947 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.js - 499 null application/javascript;charset=utf-8 266.6083ms
+2025-10-15 23:28:15.019 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/favicon-16x16.png - null null
+2025-10-15 23:28:15.069 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/favicon-16x16.png - 200 665 image/png 50.9309ms
+2025-10-15 23:28:15.085 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - null null
+2025-10-15 23:28:15.300 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 214.1875ms
+2025-10-15 23:37:05.521 +00:00 [INF] Application is shutting down...
+2025-10-15 23:38:01.029 +00:00 [INF] Now listening on: http://localhost:5142
+2025-10-15 23:38:01.144 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-15 23:38:01.146 +00:00 [INF] Hosting environment: Development
+2025-10-15 23:38:01.146 +00:00 [INF] Content root path: /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.API
+2025-10-15 23:40:44.357 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/index.html - null null
+2025-10-15 23:40:44.679 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/index.html - 200 null text/html;charset=utf-8 329.007ms
+2025-10-15 23:40:46.819 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - null null
+2025-10-15 23:40:47.055 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5142/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 237.3048ms
+2025-10-15 23:49:05.826 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/issue - application/json 310
+2025-10-15 23:49:05.826 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/issue - application/json 310
+2025-10-15 23:49:05.844 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:49:05.845 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:49:05.891 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-15 23:49:05.891 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-15 23:49:06.041 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-15 23:49:06.041 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-15 23:49:06.115 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 213.0084ms
+2025-10-15 23:49:06.116 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:49:06.117 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 400 null application/problem+json; charset=utf-8 291.5884ms
+2025-10-15 23:49:06.117 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 212.8192ms
+2025-10-15 23:49:06.118 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:49:06.119 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 400 null application/problem+json; charset=utf-8 292.86ms
+2025-10-15 23:49:43.570 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/issue - application/json 310
+2025-10-15 23:49:43.570 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:49:43.571 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-15 23:49:43.582 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-15 23:49:43.583 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 11.7605ms
+2025-10-15 23:49:43.583 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:49:43.584 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 400 null application/problem+json; charset=utf-8 14.0291ms
+2025-10-15 23:49:48.904 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/issue - application/json 310
+2025-10-15 23:49:48.905 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:49:48.905 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-15 23:49:48.907 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-15 23:49:48.908 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 3.5925ms
+2025-10-15 23:49:48.909 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:49:48.910 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 400 null application/problem+json; charset=utf-8 5.7702ms
+2025-10-15 23:50:05.636 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/issue - application/json 310
+2025-10-15 23:50:05.637 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:50:05.637 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-15 23:50:05.638 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-15 23:50:05.639 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 1.6165ms
+2025-10-15 23:50:05.640 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:50:05.641 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 400 null application/problem+json; charset=utf-8 4.6634ms
+2025-10-15 23:51:32.624 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/issue - application/json 308
+2025-10-15 23:51:32.625 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:51:32.625 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-15 23:51:32.629 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-15 23:51:32.629 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 4.645ms
+2025-10-15 23:51:32.630 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:51:32.630 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 400 null application/problem+json; charset=utf-8 5.5365ms
+2025-10-15 23:52:46.893 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/issue - application/json 295
+2025-10-15 23:52:46.894 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:52:46.894 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-15 23:52:46.895 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-15 23:52:46.895 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 0.957ms
+2025-10-15 23:52:46.895 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:52:46.895 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 400 null application/problem+json; charset=utf-8 2.4974ms
+2025-10-15 23:54:49.468 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5142/issue - application/json 301
+2025-10-15 23:54:49.472 +00:00 [INF] Executing endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:54:49.473 +00:00 [INF] Route matched with {action = "CreateCitizen", controller = "Issuer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCitizenAsync(Issuer.API.DTO.CitizenDTO) on controller Issuer.API.Controllers.IssuerController (Issuer.API).
+2025-10-15 23:54:49.475 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-15 23:54:49.476 +00:00 [INF] Executed action Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API) in 2.5414ms
+2025-10-15 23:54:49.476 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
+2025-10-15 23:54:49.477 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 400 null application/problem+json; charset=utf-8 8.0579ms

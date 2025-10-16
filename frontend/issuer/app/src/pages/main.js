@@ -1,5 +1,6 @@
 import React, { use }  from "react";
 import { useState } from "react";
+import axios from 'axios';
 
 
 
@@ -12,7 +13,7 @@ const Main = () => {
     const [idNumber, setIdNumber] = useState('');
     const [nationality, setNationality] = useState('');
     const [gender, setGender] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState(Date);
     const [placeOfBirth, setPlaceOfBirth] = useState('');
     const [address, setAddress] = useState('');
     const [dateOfIssue, setDateOfIssue] = useState('');
@@ -62,7 +63,7 @@ const Main = () => {
         try {
             
 
-            const response = await axios.post('', {
+            const response = await axios.post('http://localhost:5091/issuer/issue', {
                 Headers: {
                     'Content-Type': 'application/json'
                 },
@@ -88,10 +89,10 @@ const Main = () => {
             alert('Identity issued successfully!');
         } catch (error) {
             //resetModal();
+            console.error('Error:', error.response?.data);
+            setError(error);
 
-            //setError(error);
-
-            console.error('Error:', error);
+            
             alert('Failed to issue identity');
         }
     };
@@ -252,6 +253,17 @@ const Main = () => {
                                                         onChange={(e) => setPlaceOfBirth(e.target.value)}
                                                         className="form-control"
                                                         placeholder="Enter place of birth"
+                                                        required
+                                                    />
+                                                </div>
+                                                <div className="mb-3">
+                                                    <label className="form-label">Verification Key</label>
+                                                    <input 
+                                                        type="text" 
+                                                        value={publicKey}
+                                                        onChange={(e) => setPublicKey(e.target.value)}
+                                                        className="form-control"
+                                                        placeholder="Enter verification key"
                                                         required
                                                     />
                                                 </div>

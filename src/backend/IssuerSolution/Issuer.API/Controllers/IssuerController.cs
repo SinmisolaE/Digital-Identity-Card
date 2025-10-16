@@ -21,7 +21,7 @@ namespace Issuer.API.Controllers
             System.Console.WriteLine("In constructor");
         }
 
-        [HttpPost("try")]
+        [HttpPost("/try")]
         public ActionResult<string> Try(string name)
         {
             System.Console.WriteLine($"{name}");
@@ -36,7 +36,7 @@ namespace Issuer.API.Controllers
         }
 
         
-        [HttpPost("issue")]
+        [HttpPost("/issue")]
         public async Task<IActionResult> CreateCitizenAsync(CitizenDTO citizenDTO)
         {
             System.Console.WriteLine("hellooo");
