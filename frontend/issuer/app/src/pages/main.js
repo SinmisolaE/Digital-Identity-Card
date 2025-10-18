@@ -1,6 +1,7 @@
-import React, { use }  from "react";
+import React from "react";
 import { useState } from "react";
 import axios from 'axios';
+import {QRCodeSVG} from 'qrcode.react';
 
 
 
@@ -10,19 +11,21 @@ const Main = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [otherNames, setOtherNames] = useState('');
-    const [idNumber, setIdNumber] = useState('');
-    const [nationality, setNationality] = useState('');
+    const [nationalIdNumber, setIdNumber] = useState('');
     const [gender, setGender] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState(Date);
+    const [dob, setDateOfBirth] = useState(Date);
     const [placeOfBirth, setPlaceOfBirth] = useState('');
     const [address, setAddress] = useState('');
-    const [dateOfIssue, setDateOfIssue] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
+    const [dateOfIssue, setDateOfIssue] = useState(Date);
+    const [expiryDate, setExpiryDate] = useState(Date);
     const [publicKey, setPublicKey] = useState('');
 
     const [displaySuccess, setDisplaySuccess] = useState(false);
+    const [qrScanned, setQrScanned] = useState(false);
     const [error, setError] = useState('');
     const [status, setStatus] = useState(false);
+
+    const [content, setContent] = ('');
     
 
 
@@ -31,6 +34,20 @@ const Main = () => {
     }
 
     const resetModal = () => {
+        setFirstName('');
+        setLastName('');
+        setOtherNames('');
+        setIdNumber('');
+        setGender('');
+        setDateOfBirth('');
+        setPlaceOfBirth('');
+        setAddress('');
+        setDateOfIssue('');
+        setExpiryDate('');
+        setPublicKey('');
+
+        setError('');
+
         setModal(false);
     }
 
@@ -39,64 +56,82 @@ const Main = () => {
         setStatus(true);
         
         // Validate required fields
-        if (!firstName.trim() || !lastName.trim() || !idNumber.trim()) {
-            alert('Please fill in all required fields');
+        if (!firstName.trim() || !lastName.trim() || !nationalIdNumber.trim()) {
+            setError('Please fill in all required fields');
+            setStatus(false)
             return;
         }
         
         // Prepare form data
         const formData = {
-            firstName,
-            lastName,
-            otherNames,
-            idNumber,
-            nationality,
-            gender,
-            dateOfBirth,
-            placeOfBirth,
-            address,
-            dateOfIssue,
-            expiryDate,
-            publicKey
+            "FirstName": firstName,
+            "LastName": lastName,
+            "OtherNames": otherNames,
+            "NationalIdNumber": nationalIdNumber,
+            "Gender": gender,
+            "DOB": dob,
+            "PlaceOfBirth": placeOfBirth,
+            "Address": address,
+            "DateOfIssue": dateOfIssue,
+            "ExpiryDate": expiryDate,
+            "PublicKey": publicKey
         };
         
         try {
             
 
-            const response = await axios.post('http://localhost:5091/issuer/issue', {
-                Headers: {
+            const response = await axios.post('http://localhost:5091/issuer/issue', formData, {
+                headers: {
                     'Content-Type': 'application/json'
-                },
-                body: {
-                   formData
                 }
             });
 
+            setStatus(false)
+
             resetModal();
+
+            
 
             if (response.status === 200) {
                 setDisplaySuccess(true);
+                setContent(response?.data);
                 
             } else {
                 console.error("Error occured");
-                setError(response.data);
-                alert('Failed to issue identity');
+                
+                setError(response?.data);
+                //alert('Failed to issue identity');
             }
-            console.log('Form data:', formData);
+            //console.log('Form data:', formData);
             
             // Reset form and close modal on success
-            resetModal();
-            alert('Identity issued successfully!');
+            //resetModal();
+            //alert('Identity issued successfully!');
         } catch (error) {
             //resetModal();
-            console.error('Error:', error.response?.data);
-            setError(error);
+            setStatus(false);
+            console.error('catch error');
+            console.error('Error:', error.response?.data.title);
+            //setError("problem");
+            //setError(error.response?.data?.title);
 
             
-            alert('Failed to issue identity');
+            //alert('Failed to issue identity');
         }
     };
     
+
+    const resetIssue = () => {
+        setQrScanned(false);
+        setContent('');
+        setError('');
+    }
+
+    const handleIssueDone = () => {
+        setDisplaySuccess(false);
+    }
+
+
 
     return(
         <div className="miv-vh-100">
@@ -118,12 +153,51 @@ const Main = () => {
                         <p>Secure Identity Issuance system</p>
                     </div>
 
-                    {error && (
-                        <div className="alert alert-danger">{error}</div>
-                    )}
+                    
 
                     {displaySuccess && (
-                        <div className="alert alert-success">Identity issued successfully!</div>
+                        <div className="text-center">
+                            <div className="alert alert-success mb-3">
+                                Identity issued successfully!
+                            </div>
+                            {!qrScanned ? (
+
+                                <>
+                            
+                                <p>Scan below to save identity on wallet</p>
+                                
+                                <div className="rounded border">
+                                    <QRCodeSVG
+                                        value={JSON.stringify({jwt: content})}
+                                        size={250}
+                                        level="H"
+                                        includeMargin
+                                    />
+                                </div>
+
+                                <div className="mb-3">
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={resetIssue}
+                                    >
+                                        Scan Complete
+                                    </button>
+                                </div>
+                                
+                                </>
+                            ) : (
+                                <div className="alert alert-info">
+                                    <h5>✓ Identity Saved to Wallet!</h5>
+                                    <p>The digital identity has been successfully transferred.</p>
+                                    <button 
+                                        className="btn btn-primary"
+                                        onClick={handleIssueDone}
+                                    >
+                                        Close
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                     )}
 
                     <div className="text-center mt-3">
@@ -158,6 +232,11 @@ const Main = () => {
                                        
 
                                         <div className="modal-body">
+
+                                            {error && (
+                                                <div className="alert alert-danger">{error}</div>
+                                            )}
+
                                             <form id="identityForm">
 
                                                 <div className="mb-3">
@@ -199,7 +278,7 @@ const Main = () => {
                                                     <label className="form-label">ID Number</label>
                                                     <input 
                                                         type="text" 
-                                                        value={idNumber}
+                                                        value={nationalIdNumber}
                                                         onChange={(e) => setIdNumber(e.target.value)}
                                                         className="form-control"
                                                         placeholder="Enter national ID number"
@@ -207,17 +286,7 @@ const Main = () => {
                                                     />
                                                 </div>
 
-                                                <div className="mb-3">
-                                                    <label className="form-label">Nationality</label>
-                                                    <input 
-                                                        type="text" 
-                                                        value={nationality}
-                                                        onChange={(e) => setNationality(e.target.value)}
-                                                        className="form-control"
-                                                        placeholder="Enter nationality"
-                                                        required
-                                                    />
-                                                </div>
+                                                
 
                                                 <div className="mb-3">
                                                     <label className="form-label">Gender</label>
@@ -238,7 +307,7 @@ const Main = () => {
                                                     <label className="form-label">Date of Birth</label>
                                                     <input 
                                                         type="date" 
-                                                        value={dateOfBirth}
+                                                        value={dob}
                                                         onChange={(e) => setDateOfBirth(e.target.value)}
                                                         className="form-control"
                                                         required
@@ -256,6 +325,44 @@ const Main = () => {
                                                         required
                                                     />
                                                 </div>
+
+                                                <div className="mb-3">
+                                                    <label className="form-label">Address</label>
+                                                    <input 
+                                                        type="text" 
+                                                        value={address}
+                                                        onChange={(e) => setAddress(e.target.value)}
+                                                        className="form-control"
+                                                        placeholder="Enter address"
+                                                        required
+                                                    />
+                                                </div>
+
+                                                <div className="mb-3">
+                                                    <label className="form-label">Date of Issue</label>
+                                                    <input 
+                                                        type="date" 
+                                                        value={dateOfIssue}
+                                                        onChange={(e) => setDateOfIssue(e.target.value)}
+                                                        className="form-control"
+                                                        placeholder="Enter the date of issue"
+                                                        required
+                                                    />
+                                                </div>
+
+                                                <div className="mb-3">
+                                                    <label className="form-label">Expiry Date</label>
+                                                    <input 
+                                                        type="date" 
+                                                        value={expiryDate}
+                                                        onChange={(e) => setExpiryDate(e.target.value)}
+                                                        className="form-control"
+                                                        placeholder="Enter Date of Expiry"
+                                                        required
+                                                    />
+                                                </div>
+
+
                                                 <div className="mb-3">
                                                     <label className="form-label">Verification Key</label>
                                                     <input 
@@ -287,7 +394,7 @@ const Main = () => {
                                                 form="identityForm"
                                                 onClick={handleSubmit}
                                             >
-                                                Issue Identity
+                                                {status ? 'Issuing...' : 'Issue Identity'}
                                             </button>
                                         </div>
                                     </div>
