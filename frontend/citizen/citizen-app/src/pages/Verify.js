@@ -40,6 +40,9 @@ const VerifyIdentity = () => {
         verifierUrl: data.verifierUrl, // URL to send credentials to
       });
 
+
+      handleApprove(data.nonce, data.verifierUrl);
+
     } catch {
 
       alert('not getting nonce');
@@ -51,6 +54,7 @@ const VerifyIdentity = () => {
         nonce: nonce,
         verifierUrl: result,
       });
+
     }
   };
 
@@ -78,22 +82,10 @@ const VerifyIdentity = () => {
     };
   }, [scanning]);
 
-  useEffect(() => {
-  if (verificationRequest?.shouldApprove) {
-    // Reset the flag first
-    setVerificationRequest(prev => ({
-      ...prev,
-      shouldApprove: false
-    }));
-    
-    // Then call handleApprove
-    handleApprove();
-  }
-}, [verificationRequest]);
 
 
 
-  const handleApprove = async () => {
+  const handleApprove = async (nonce, verifierUrl) => {
     if (storedCredentials.length === 0) {
       alert("No credentials available to share. Please receive a credential first.");
       setVerificationRequest(null);
