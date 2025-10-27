@@ -13,6 +13,8 @@ const VerifyIdentity = () => {
   // Load stored credentials on component mount
   useEffect(() => {
     const credentials = JSON.parse(localStorage.getItem("credentials") || "[]");
+
+    alert("credentials: " + credentials);
     setStoredCredentials(credentials);
   }, []);
 
