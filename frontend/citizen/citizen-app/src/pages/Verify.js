@@ -17,7 +17,6 @@ const VerifyIdentity = () => {
     alert("credentials: " + JSON.stringify(credentials));
     setStoredCredentials(credentials.data);
 
-    alert("data: " + storedCredentials);
   }, []);
 
   // QR Scanner effect
