@@ -99,13 +99,13 @@ const VerifyIdentity = () => {
 
     try {
       // Use the most recent credential or let user select
-      //const credentialToShare = storedCredentials[storedCredentials.length - 1];
+      const credentialToShare = storedCredentials[jwt];
 
-      alert("Credentials: " + storedCredentials);
+      alert("Credentials: " + credentialToShare);
       
       // Send credentials with nonce to verifier URL
       const payload = {
-        Jwt: storedCredentials.jwt,
+        Jwt: credentialToShare,
         nonce: nonce, // JWT token
       };
 
