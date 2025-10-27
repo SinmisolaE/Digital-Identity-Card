@@ -50,12 +50,19 @@ const VerifyIdentity = () => {
     try {
       const data = JSON.parse(result);
 
-      alert(data?.nonce);
-      alert(data?.Jwt);
+      if (!data.nonce || !data.verifierUrl) {
+        alert("Invalid QR code: missing required information");
+        return;
+      }
+
+      alert("nonce:" + data?.nonce);
+      alert("url: " + data?.verifierUrl);
       setVerificationRequest({
         nonce: data.nonce, // The unique verification session ID
         verifierUrl: data.verifierUrl, // URL to send credentials to
       });
+
+      handleApprove();
     } catch {
 
       alert('not getting nonce');
