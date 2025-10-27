@@ -15,7 +15,7 @@ const VerifyIdentity = () => {
     const credentials = JSON.parse(localStorage.getItem("credentials") || "[]");
 
     alert("credentials: " + JSON.stringify(credentials));
-    setStoredCredentials(credentials);
+    setStoredCredentials(credentials.data);
   }, []);
 
   // QR Scanner effect
@@ -98,6 +98,8 @@ const VerifyIdentity = () => {
     try {
       // Use the most recent credential or let user select
       const credentialToShare = storedCredentials[storedCredentials.length - 1];
+
+      alert("Credentials: " + credentialToShare);
       
       // Send credentials with nonce to verifier URL
       const payload = {

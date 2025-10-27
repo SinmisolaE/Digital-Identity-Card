@@ -54,12 +54,16 @@ const ReceiveCredential = () => {
 
   const handleScan = (result) => {
     setScanning(false);
+
+    const data = JSON.parse(result);
+
+    alert("Receive; " + JSON.stringify(data));
     
     // Store the scanned credential
     const credentials = JSON.parse(localStorage.getItem("credentials") || "[]");
     credentials.push({
       id: Date.now(),
-      data: result,
+      data: data,
       timestamp: new Date().toISOString(),
     });
     localStorage.setItem("credentials", JSON.stringify(credentials));
