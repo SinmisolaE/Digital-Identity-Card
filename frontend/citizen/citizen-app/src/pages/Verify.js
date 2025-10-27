@@ -80,8 +80,8 @@ const VerifyIdentity = () => {
         qrScannerRef.current.destroy();
       }
     };
-     // eslint-disable react-hooks/exhaustive-deps
-  }, [scanning]); // eslint-disable-next-line react-hooks/exhaustive-deps
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scanning]); 
 
 
 
@@ -100,12 +100,12 @@ const VerifyIdentity = () => {
       // Send credentials with nonce to verifier URL
       const payload = {
         Jwt: credentialToShare.data,
-        nonce: verificationRequest.nonce, // JWT token
+        nonce: nonce, // JWT token
       };
 
-      alert(payload);
+      alert(JSON.stringify(payload));
 
-      const response = await fetch(verificationRequest.verifierUrl, {
+      const response = await fetch(verifierUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
