@@ -40,7 +40,6 @@ const VerifyIdentity = () => {
         verifierUrl: data.verifierUrl, // URL to send credentials to
       });
 
-      handleApprove();
     } catch {
 
       alert('not getting nonce');
@@ -78,6 +77,21 @@ const VerifyIdentity = () => {
       }
     };
   }, [scanning]);
+
+  useEffect(() => {
+  if (verificationRequest?.shouldApprove) {
+    // Reset the flag first
+    setVerificationRequest(prev => ({
+      ...prev,
+      shouldApprove: false
+    }));
+    
+    // Then call handleApprove
+    handleApprove();
+  }
+}, [verificationRequest]);
+
+
 
   const handleApprove = async () => {
     if (storedCredentials.length === 0) {
