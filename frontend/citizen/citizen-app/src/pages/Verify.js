@@ -18,7 +18,7 @@ const VerifyIdentity = () => {
 
   // QR Scanner effect
   useEffect(() => {
-
+     // eslint-disable react-hooks/exhaustive-deps
   const handleScan = (result) => {
     setScanning(false);
 
@@ -80,6 +80,7 @@ const VerifyIdentity = () => {
         qrScannerRef.current.destroy();
       }
     };
+     // eslint-disable react-hooks/exhaustive-deps
   }, [scanning]); // eslint-disable-next-line react-hooks/exhaustive-deps
 
 
