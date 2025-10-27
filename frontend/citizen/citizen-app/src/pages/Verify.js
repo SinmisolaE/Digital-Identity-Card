@@ -14,7 +14,7 @@ const VerifyIdentity = () => {
   useEffect(() => {
     const credentials = JSON.parse(localStorage.getItem("credentials") || "[]");
 
-    alert("credentials: " + credentials);
+    alert("credentials: " + JSON.stringify(credentials));
     setStoredCredentials(credentials);
   }, []);
 
