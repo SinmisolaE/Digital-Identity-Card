@@ -90,8 +90,8 @@ const VerifyIdentity = () => {
       
       // Send credentials with nonce to verifier URL
       const payload = {
-        Jwt: verificationRequest.nonce,
-        nonce: credentialToShare.data, // JWT token
+        Jwt: credentialToShare.data,
+        nonce: verificationRequest.nonce, // JWT token
       };
 
       alert(payload);
