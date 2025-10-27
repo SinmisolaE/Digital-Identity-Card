@@ -60,13 +60,14 @@ const ReceiveCredential = () => {
     alert("Receive; " + JSON.stringify(data));
     
     // Store the scanned credential
-    const credentials = JSON.parse(localStorage.getItem("credentials") || "[]");
-    credentials.push({
+    const credentials = {
       id: Date.now(),
       data: data,
       timestamp: new Date().toISOString(),
-    });
+    };
     localStorage.setItem("credentials", JSON.stringify(credentials));
+
+    alert("From storage; " + credentials)
     setCredentialReceived(true);
     
     // Reset after 3 seconds
