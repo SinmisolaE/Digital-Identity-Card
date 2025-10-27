@@ -15,7 +15,7 @@ const VerifyIdentity = () => {
     const credentials = JSON.parse(localStorage.getItem("credentials") || "[]");
 
     alert("credentials: " + JSON.stringify(credentials));
-    setStoredCredentials(credentials.data);
+    setStoredCredentials(credentials);
 
   }, []);
 
@@ -104,7 +104,7 @@ const VerifyIdentity = () => {
       
       // Send credentials with nonce to verifier URL
       const payload = {
-        Jwt: credentialToShare.jwt,
+        Jwt: credentialToShare.data,
         nonce: nonce, // JWT token
       };
 
