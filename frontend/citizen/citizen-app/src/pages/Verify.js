@@ -43,15 +43,22 @@ const VerifyIdentity = () => {
 
   const handleScan = (result) => {
     setScanning(false);
+
+    alert("Scanned qr code");
     
     // Parse the scanned QR code (contains nonce and verifier URL)
     try {
       const data = JSON.parse(result);
+
+      alert(data?.nonce);
+      alert(data?.Jwt);
       setVerificationRequest({
         nonce: data.nonce, // The unique verification session ID
         verifierUrl: data.verifierUrl, // URL to send credentials to
       });
     } catch {
+
+      alert('not getting nonce');
       // If not JSON, assume it's just a URL with nonce as parameter
       const url = new URL(result);
       const nonce = url.searchParams.get('nonce');
@@ -76,9 +83,11 @@ const VerifyIdentity = () => {
       
       // Send credentials with nonce to verifier URL
       const payload = {
-        nonce: verificationRequest.nonce,
-        credential: credentialToShare.data, // JWT token
+        Jwt: verificationRequest.nonce,
+        nonce: credentialToShare.data, // JWT token
       };
+
+      alert(payload);
 
       const response = await fetch(verificationRequest.verifierUrl, {
         method: 'POST',
@@ -89,14 +98,17 @@ const VerifyIdentity = () => {
       });
 
       if (response.ok) {
+        alert("Credential shared successfully");
         console.log("Credential shared successfully");
         setVerificationStatus("approved");
       } else {
+        alert("Failed to share credential");
         console.error("Failed to share credential");
         setVerificationStatus("error");
       }
       
     } catch (error) {
+      alert("Error sharing credential:", error);
       console.error("Error sharing credential:", error);
       setVerificationStatus("error");
     }
