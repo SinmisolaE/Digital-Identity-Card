@@ -80,7 +80,7 @@ const VerifyIdentity = () => {
         qrScannerRef.current.destroy();
       }
     };
-  }, [scanning]);
+  }, [scanning]); // eslint-disable-next-line react-hooks/exhaustive-deps
 
 
 
