@@ -99,7 +99,7 @@ const VerifyIdentity = () => {
 
     try {
       // Use the most recent credential or let user select
-      const credentialToShare = storedCredentials[jwt];
+      const credentialToShare = storedCredentials.jwt;
 
       alert("Credentials: " + credentialToShare);
       
