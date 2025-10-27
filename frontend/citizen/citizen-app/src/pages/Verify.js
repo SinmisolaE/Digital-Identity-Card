@@ -129,7 +129,7 @@ const VerifyIdentity = () => {
       }
       
     } catch (error) {
-      alert("Error sharing credential:", error);
+      alert("Error sharing credential: " + error.message);
       console.error("Error sharing credential:", error);
       setVerificationStatus("error");
     }
