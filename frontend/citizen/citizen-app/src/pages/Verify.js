@@ -16,6 +16,8 @@ const VerifyIdentity = () => {
 
     alert("credentials: " + JSON.stringify(credentials));
     setStoredCredentials(credentials.data);
+
+    alert("data: " + storedCredentials);
   }, []);
 
   // QR Scanner effect
@@ -97,13 +99,13 @@ const VerifyIdentity = () => {
 
     try {
       // Use the most recent credential or let user select
-      const credentialToShare = storedCredentials[storedCredentials.length - 1];
+      //const credentialToShare = storedCredentials[storedCredentials.length - 1];
 
-      alert("Credentials: " + credentialToShare);
+      alert("Credentials: " + storedCredentials);
       
       // Send credentials with nonce to verifier URL
       const payload = {
-        Jwt: credentialToShare.data,
+        Jwt: storedCredentials.jwt,
         nonce: nonce, // JWT token
       };
 
