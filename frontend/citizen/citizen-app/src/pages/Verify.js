@@ -18,28 +18,6 @@ const VerifyIdentity = () => {
 
   // QR Scanner effect
   useEffect(() => {
-    if (scanning && videoRef.current) {
-      qrScannerRef.current = new QrScanner(
-        videoRef.current,
-        (result) => {
-          handleScan(result.data);
-        },
-        {
-          highlightScanRegion: true,
-          highlightCodeOutline: true,
-        }
-      );
-
-      qrScannerRef.current.start();
-    }
-
-    return () => {
-      if (qrScannerRef.current) {
-        qrScannerRef.current.stop();
-        qrScannerRef.current.destroy();
-      }
-    };
-  }, [scanning]);
 
   const handleScan = (result) => {
     setScanning(false);
@@ -76,6 +54,30 @@ const VerifyIdentity = () => {
       });
     }
   };
+
+
+    if (scanning && videoRef.current) {
+      qrScannerRef.current = new QrScanner(
+        videoRef.current,
+        (result) => {
+          handleScan(result.data);
+        },
+        {
+          highlightScanRegion: true,
+          highlightCodeOutline: true,
+        }
+      );
+
+      qrScannerRef.current.start();
+    }
+
+    return () => {
+      if (qrScannerRef.current) {
+        qrScannerRef.current.stop();
+        qrScannerRef.current.destroy();
+      }
+    };
+  }, [scanning]);
 
   const handleApprove = async () => {
     if (storedCredentials.length === 0) {
