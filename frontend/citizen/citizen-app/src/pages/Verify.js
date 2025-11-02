@@ -126,12 +126,15 @@ const VerifyIdentity = () => {
         alert("Failed to share credential");
         console.error("Failed to share credential");
         setVerificationStatus("error");
+        setVerificationRequest(null);
       }
       
     } catch (error) {
       alert("Error sharing credential: " + error.message);
       console.error("Error sharing credential:", error);
       setVerificationStatus("error");
+      setVerificationRequest(null);
+
     }
     
     // Reset after 5 seconds
