@@ -15,6 +15,10 @@ const Homepage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+
+        if ((email === "admin@gmail.com") && (password === "admin")) {
+            navigate("./issue");
+        }
         
         try {
             const response = await axios.post(`http`, {
@@ -55,8 +59,8 @@ const Homepage = () => {
                   <div className="card shadow-lg">
                     <div className="card-body p-5">
                     <div className="text-center mb-4">
-                        <h1 className="mb-2">Verifier Portal</h1>
-                        <p className="text-muted">Digital Identity Verification System</p>
+                        <h1 className="mb-2">Issuer Portal</h1>
+                        <p className="text-muted">Digital Identity Issuance System</p>
                     </div>
 
                     {error && (

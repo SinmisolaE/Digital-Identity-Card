@@ -25,7 +25,7 @@ const Main = () => {
     const [error, setError] = useState('');
     const [status, setStatus] = useState(false);
 
-    const [content, setContent] = ('');
+    const [content, setContent] = useState('');
     
 
 
@@ -94,6 +94,7 @@ const Main = () => {
 
             if (response.status === 200) {
                 setDisplaySuccess(true);
+                console.log(response?.data);
                 setContent(response?.data);
                 
             } else {
@@ -111,9 +112,9 @@ const Main = () => {
             //resetModal();
             setStatus(false);
             console.error('catch error');
-            console.error('Error:', error.response?.data.title);
+            console.error('Error:', error.response?.data);
             //setError("problem");
-            //setError(error.response?.data?.title);
+            setError(error.response?.data);
 
             
             //alert('Failed to issue identity');
@@ -125,6 +126,7 @@ const Main = () => {
         setQrScanned(false);
         setContent('');
         setError('');
+        setDisplaySuccess(false);
     }
 
     const handleIssueDone = () => {
@@ -166,12 +168,13 @@ const Main = () => {
                             
                                 <p>Scan below to save identity on wallet</p>
                                 
-                                <div className="rounded border">
+                                <div className="p-3 bg-white rounded border shadow-sm qr-container" 
+                                    >
                                     <QRCodeSVG
                                         value={JSON.stringify({jwt: content})}
-                                        size={250}
-                                        level="H"
-                                        includeMargin
+                                        size={Math.min(250, window.innerWidth * 0.8)}
+                                        level="M"
+                                        includeMargin={true}
                                     />
                                 </div>
 
@@ -201,8 +204,8 @@ const Main = () => {
                     )}
 
                     <div className="text-center mt-3">
-                        <p>
-                            Click below to issue an Identity
+                        <p className="mt-2">
+                            Click below to issue a new Identity
                         </p>
                         <button 
                             onClick={displayModal}

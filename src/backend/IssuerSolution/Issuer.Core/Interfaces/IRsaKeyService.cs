@@ -8,10 +8,16 @@ public interface IRsaKeyService
     RsaSecurityKey PrivateKey { get; }
     RsaSecurityKey PublicKey { get; }
     */
-    RsaSecurityKey GetPrivateKey();
+    //RsaSecurityKey GetPrivateKey();
 
-    Task<string> GetPublicKeyPem();
-    string GetPrivateKeyPem();
+    Task<RsaSecurityKey> GetPrivateKey();
+
+    Task<string> GetPrivateKeyPem();
+
+    Task<string> GenerateKeys();
+
+    //Task<string> GetPublicKeyPem();
+    //string GetPrivateKeyPem();
 
 
 }

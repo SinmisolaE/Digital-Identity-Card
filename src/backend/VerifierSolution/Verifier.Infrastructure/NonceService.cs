@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Verifier.Core.DTO;
 using Verifier.Core.Interfaces;
 
 namespace Verifier.Infrastructure;
@@ -38,31 +39,52 @@ public class NonceService : INonceService
             Size = 1
         };
 
-        _cache.Set(nonce, "active", cacheEntryOptions);
+        _cache.Set(nonce, "pending", cacheEntryOptions);
 
         _logger.LogInformation($"Nonce generated: {nonce}");
 
         return nonce;
     }
 
-    public bool IsValid(string nonce)
+    public bool MarkAsVerified(string nonce, CitizenDTO citizenData)
     {
-        if (String.IsNullOrEmpty(nonce)) throw new Exception("No nonce provided");
-
-        // check if nonce is present
         if (_cache.TryGetValue(nonce, out _))
         {
-            _logger.LogInformation($"Nonce found: {nonce}");
+            var cacheEntryOptions = new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(2),
+                Size = 1
+            };
 
-            _cache.Remove(nonce);
+            _logger.LogInformation("Setting cache");
+            _cache.Set(nonce, citizenData, cacheEntryOptions); // Short expiry after verification
 
-
+            _logger.LogInformation($"Nonce {nonce} marked as verified");
             return true;
         }
 
-        _logger.LogWarning($"Nonce not right: {nonce}");
-
+        _logger.LogWarning($"Nonce {nonce} not found or already used");
         return false;
+    }
+    
+    public object GetStatus(string nonce)
+    {
+        if (_cache.TryGetValue(nonce, out object value))
+        {
+            if (value is string str && str == "pending")
+                return new { status = "pending" };
+            else if (value is CitizenDTO citizen)
+                return new { status = "verified", citizenData = citizen };
+        }
+        
+        return new { status = "expired" };
+    }
+    public bool IsValid(string nonce)
+    {
+        _logger.LogInformation($"trying to check validity: {nonce}");
+        if (String.IsNullOrEmpty(nonce)) throw new Exception("No nonce provided");
+
+        return _cache.TryGetValue(nonce, out object value) && value is string str && str == "pending";
     }
 
 }

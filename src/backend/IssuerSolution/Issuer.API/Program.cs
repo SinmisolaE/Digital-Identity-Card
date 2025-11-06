@@ -17,6 +17,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer(); // ← For Minimal APIs
 
+builder.Services.AddHealthChecks();
+
 
 //builder.Logging.ClearProviders();
 
@@ -61,5 +63,6 @@ app.MapControllers();
 
 app.MapGet("/test", () => "Test working!");
 
+app.MapHealthChecks("/health");
 
 app.Run();

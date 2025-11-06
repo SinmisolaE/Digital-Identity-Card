@@ -15,21 +15,27 @@ public class JwtGenerator : IJwtGenerator
     private readonly IRsaKeyService _rsa;
 
     //Using Lazy initialization
+     /*
     private readonly Lazy<RsaSecurityKey> _privateKey;
 
     private readonly Lazy<string> _privateKeyPem;
 
     private readonly Lazy<Task<string>> _publicKeyPem;
+    */
+
     private readonly ILogger<JwtGenerator> _logger;
 
 
     public JwtGenerator(IRsaKeyService rsa, ILogger<JwtGenerator> logger)
     {
+        //_logger.LogInformation("in constructor, therefore initializing rsa");
         _rsa = rsa;
 
-        _privateKey = new Lazy<RsaSecurityKey>(() => rsa.GetPrivateKey());
-        _privateKeyPem = new Lazy<string>(() => rsa.GetPrivateKeyPem());
+        /*
+        _privateKeyPem = await _rsa.GetPrivateKeyPem());
         _publicKeyPem = new Lazy<Task<string>>(async () => await rsa.GetPublicKeyPem());
+
+        */
         _logger = logger;
     }
 
@@ -39,14 +45,15 @@ public class JwtGenerator : IJwtGenerator
         _logger.LogInformation("Trying to generate jwt");
         var tokenHandler = new JwtSecurityTokenHandler();
 
-        var publicKey = await _publicKeyPem.Value;
+        _logger.LogInformation("Getting private key");
+        var privateKey = await _rsa.GetPrivateKey();
 
         System.Console.WriteLine();
-        System.Console.WriteLine($"Private: {_privateKeyPem.Value}");
+        //System.Console.WriteLine($"Private: {_privateKeyPem.Value}");
         System.Console.WriteLine();
         System.Console.WriteLine();
 
-        System.Console.WriteLine($"Public: {publicKey}");
+        //System.Console.WriteLine($"Public: {publicKey}");
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
@@ -68,7 +75,7 @@ public class JwtGenerator : IJwtGenerator
 
 
 
-            SigningCredentials = new SigningCredentials(_privateKey.Value, SecurityAlgorithms.RsaSha256)
+            SigningCredentials = new SigningCredentials(privateKey, SecurityAlgorithms.RsaSha256)
 
 
         };

@@ -56,10 +56,14 @@ public class RegistryService : IRegistryService
         {
             
             //check if issuer exists
-            var confirmIssuer = await _repository.GetRegistryByIssuerAsync(registry.IssuerId);
+            var existingIssuer = await _repository.GetRegistryByIssuerAsync(registry.IssuerId);
 
-            System.Console.WriteLine($"Truing: {confirmIssuer?.IssuerId}");
-            if (confirmIssuer != null) return true;
+            System.Console.WriteLine($"Truing: {existingIssuer?.IssuerId}");
+            if (existingIssuer != null)
+            {
+                throw new InvalidOperationException($"Issuer {existingIssuer} already exists!");
+            }
+            
             
             //Try to add to db, if issuerId exists, catch exception
             var response = await _repository.AddRegistryAsync(registry);

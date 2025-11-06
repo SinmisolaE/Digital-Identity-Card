@@ -30,6 +30,8 @@ namespace Verifier.API.Controllers
             _logger.LogInformation("Into verify function");
             try
             {
+                _logger.LogInformation($"Jwt: {jwtDTO.nonce}");
+                _logger.LogInformation($"Jwt: {jwtDTO.Jwt}");
                 _logger.LogInformation("Ensure nonce challenge is correct");
                 var response = _nonceService.IsValid(jwtDTO.nonce);
 
@@ -42,6 +44,12 @@ namespace Verifier.API.Controllers
                 var citizenDTO = await _service.GetCitizenAsync(jwtDTO);
 
                 if (citizenDTO == null) throw new Exception("Citizen not found");
+
+
+                _logger.LogInformation("Mark nonnce as verified ");
+                _nonceService.MarkAsVerified(jwtDTO.nonce, citizenDTO);
+
+
 
                 return Ok(citizenDTO);
             }
@@ -76,7 +84,12 @@ namespace Verifier.API.Controllers
                 return BadRequest(e.Message);
             }
         }
-        
 
+        [HttpGet("/status")]
+        public IActionResult GetVerificationStatus(string nonce)
+        {
+            var status = _nonceService.GetStatus(nonce);
+            return Ok(status);
+        }
     }
 }
