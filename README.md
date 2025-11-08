@@ -121,9 +121,3 @@ Key implementation points:
 - Citizen receive page: [frontend/citizen/citizen-app/src/pages/receiveCredential.js](frontend/citizen/citizen-app/src/pages/receiveCredential.js)  
 - Citizen verify page: [frontend/citizen/citizen-app/src/pages/Verify.js](frontend/citizen/citizen-app/src/pages/Verify.js)  
 - Issuer main page: [frontend/issuer/app/src/pages/main.js](frontend/issuer/app/src/pages/main.js)
-
----
-
-If you want, I can:
-- generate this README file in the repo (apply the content above),
-- or produce smaller per-service READMEs (backend/frontends) with step-by-step run scripts.
