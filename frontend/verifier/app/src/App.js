@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import Homepage from "./components/homepage";
 import Verify  from './components/Verify';
+import AutoVerify from './components/AutoVerify';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage/>}/>
         <Route path="/verify" element={<Verify/>}/>
+        <Route path="/autoverify" element={<AutoVerify/>}/>
       </Routes>
     </Router>
   );

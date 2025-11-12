@@ -7,7 +7,7 @@ namespace Verifier.Core.DTO;
 public class CitizenDTO
 {
 
-    public CitizenDTO(string firstName, string lastName, string otherNames, string nationalIdNumber, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate, string publicKey)
+    public CitizenDTO(string firstName, string lastName, string otherNames, string nationalIdNumber, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -19,7 +19,6 @@ public class CitizenDTO
         Address = address;
         DateOfIssue = dateOfIssue;
         ExpiryDate = expiryDate;
-        PublicKey = publicKey;
     }
 
     [Required]
@@ -49,6 +48,4 @@ public class CitizenDTO
 
     [Required]
     public DateOnly ExpiryDate { get; set; }
-
-    public string PublicKey { get; init; } = string.Empty;
 }

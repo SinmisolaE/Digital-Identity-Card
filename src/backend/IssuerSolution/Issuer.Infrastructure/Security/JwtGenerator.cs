@@ -67,8 +67,7 @@ public class JwtGenerator : IJwtGenerator
                 new Claim("Gender", citizen.Gender),
                 new Claim("DateOfIssue", citizen.DateOfIssue.ToString()),
                 new Claim("ExpiryDate", citizen.ExpiryDate.ToString()),
-                new Claim("PlaceOfBirth", citizen.PlaceOfBirth),
-                new Claim("CitizenPublicKey", citizen.PublicKey)
+                new Claim("PlaceOfBirth", citizen.PlaceOfBirth)
             }),
 
             Expires = DateTime.UtcNow.AddYears(10),

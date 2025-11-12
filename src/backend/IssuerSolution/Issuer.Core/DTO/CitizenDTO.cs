@@ -34,6 +34,4 @@ public class CitizenDTO
     [Required]
     public DateOnly ExpiryDate { get; set; }
 
-    public string PublicKey { get; init; } = string.Empty;
-
 }

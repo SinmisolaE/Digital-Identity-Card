@@ -89,10 +89,7 @@ public class JwtVerifier : IJwtVerifier
             GetClaimValue(claims, "Address"),
 
             DateOnly.Parse(GetClaimValue(claims, "DateOfIssue")),
-            DateOnly.Parse(GetClaimValue(claims, "ExpiryDate")),
-
-            GetClaimValue(claims, "CitizenPublicKey")
-
+            DateOnly.Parse(GetClaimValue(claims, "ExpiryDate"))
         );
     }
 

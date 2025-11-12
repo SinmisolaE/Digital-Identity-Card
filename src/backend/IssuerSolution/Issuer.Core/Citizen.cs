@@ -7,7 +7,7 @@ namespace Issuer.Core;
 // This class takes the credentials of citizen 
 public class Citizen
 {
-    public Citizen(string firstName, string lastName, string otherNames, string nationalIdNumber, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate, string publicKey)
+    public Citizen(string firstName, string lastName, string otherNames, string nationalIdNumber, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -19,7 +19,6 @@ public class Citizen
         Address = address;
         DateOfIssue = dateOfIssue;
         ExpiryDate = expiryDate;
-        PublicKey = publicKey;
     }
 
     [Required]
@@ -33,6 +32,7 @@ public class Citizen
     [Required]
     public string NationalIdNumber { get; init; } = string.Empty;
 
+    [Required]
     public string Gender { get; set; } = string.Empty;
 
     [Required]
@@ -49,9 +49,6 @@ public class Citizen
 
     [Required]
     public DateOnly ExpiryDate { get; set; }
-
-    [Required]
-    public string PublicKey { get; init; }
 
     
 }

@@ -5,7 +5,7 @@ namespace Verifier.Core.Enitity;
 
 public class Citizen
 {
-    public Citizen(string firstName, string lastName, string otherNames, string nationalIdNumber, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate, string publicKey)
+    public Citizen(string firstName, string lastName, string otherNames, string nationalIdNumber, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -17,7 +17,6 @@ public class Citizen
         Address = address;
         DateOfIssue = dateOfIssue;
         ExpiryDate = expiryDate;
-        PublicKey = publicKey;
     }
 
 
@@ -49,6 +48,4 @@ public class Citizen
     [Required]
     public DateOnly ExpiryDate { get; set; }
 
-    [Required]
-    public string PublicKey { get; init; }
 }
