@@ -2,6 +2,7 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 
 using System.Text.Json;
+
 using Microsoft.Extensions.Logging;
 using Verifier.Core.DTO;
 using Verifier.Core.Entity;
@@ -16,12 +17,14 @@ public class VerifierService : IVerifierService
     private readonly ILogger<TrustRegistry> _logger;
 
     private readonly IJwtVerifier _jwtVerifier;
+    private readonly ICacheService _cacheService;
 
-    public VerifierService(ITrustRegistryClient trustRegistry, IJwtVerifier jwtVerifier, ILogger<TrustRegistry> logger)
+    public VerifierService(ITrustRegistryClient trustRegistry, IJwtVerifier jwtVerifier, ICacheService cacheService, ILogger<TrustRegistry> logger)
     {
         _logger = logger;
         _trustRegistry = trustRegistry;
         _jwtVerifier = jwtVerifier;
+        _cacheService = cacheService;
     }
 
     public async Task<CitizenDTO> GetCitizenAsync(JwtDTO jwtDTO)
@@ -33,36 +36,59 @@ public class VerifierService : IVerifierService
             throw new Exception("Citizen details not passed");
         }
 
-        _logger.LogInformation("Contacting trust registry");
-        var data = await _trustRegistry.GetRegistryByIssuerAsync("gra");
+        _logger.LogInformation("Checking public key from cache");
+        var cacheKey = "gra";
+        var publicKey = "";
 
-        if (data == null)
+        var response = await _cacheService.GetStringAsync(cacheKey);
+
+        // if key no in cache
+        if (string.IsNullOrEmpty(response))
         {
-            _logger.LogWarning("Nothing exists");
-            throw new Exception("Issuer not found");
+            _logger.LogInformation("Contacting trust registry");
+            var data = await _trustRegistry.GetRegistryByIssuerAsync("gra");
+
+            if (data == null)
+            {
+                _logger.LogWarning("Nothing exists");
+                throw new Exception("Issuer not found");
+            }
+
+            _logger.LogInformation("data received");
+
+            _logger.LogInformation("creating tr instance");
+
+            System.Console.WriteLine($"Data:   {data.IssuerId}\n {data.PublicKey}\n {data.Status}");
+
+            TrustRegistry registry = new TrustRegistry(data.IssuerId, data.PublicKey, (TrustRegistry.SetStatus)Enum.Parse(typeof(TrustRegistry.SetStatus), data.Status, ignoreCase: true));
+
+            if (registry == null) throw new Exception("Issuer not found!");
+
+            _logger.LogInformation("instance created 200");
+
+            if (registry.Status != TrustRegistry.SetStatus.Active)
+            {
+                throw new Exception("Issuer key is inactive! Contact Issuer for renewal");
+            }
+
+            publicKey = data.PublicKey;
+
+
+            //add publickey to cache
+
+            if (await _cacheService.SetStringAsync(cacheKey, publicKey))
+            {
+                _logger.LogInformation("String stored to cache successfully");
+            }
+            else _logger.LogError("String failed to store to cache");
+
+        } else {
+            publicKey = response;
         }
-
-        _logger.LogInformation("data received");
-
-        _logger.LogInformation("creating tr instance");
-
-        System.Console.WriteLine($"Data:   {data.IssuerId}\n {data.PublicKey}\n {data.Status}");
-
-        TrustRegistry registry = new TrustRegistry(data.IssuerId, data.PublicKey, (TrustRegistry.SetStatus)Enum.Parse(typeof(TrustRegistry.SetStatus), data.Status, ignoreCase: true));
-
-        if (registry == null) throw new Exception("Issuer not found!");
-
-        _logger.LogInformation("instance created 200");
-
-        if (registry.Status != TrustRegistry.SetStatus.Active)
-        {
-            throw new Exception("Issuer key is inactive! Contact Issuer for renewal");
-        }
-
         
 
         _logger.LogInformation("Get citizen from jwt");
-        var citizen = _jwtVerifier.ValidateAndExtractCitizen(jwtDTO.Jwt, data.PublicKey);
+        var citizen = _jwtVerifier.ValidateAndExtractCitizen(jwtDTO.Jwt, publicKey);
 
         
 

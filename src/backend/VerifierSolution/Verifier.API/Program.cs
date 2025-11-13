@@ -35,11 +35,17 @@ builder.Services.AddHttpClient<ITrustRegistryClient, TrustRegistryClient>(client
 }
 );
 
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    string connection = builder.Configuration.GetConnectionString("Redis");
 
+    options.Configuration = connection;
+});
 
 builder.Services.AddScoped<IVerifierService, VerifierService>();
 
 builder.Services.AddScoped<IJwtVerifier, JwtVerifier>();
+builder.Services.AddSingleton<ICacheService, CacheService>();
 
 
 var app = builder.Build();

@@ -30,8 +30,7 @@ public class IssuerService : IIssuerService
         var citizen = new Citizen(
             citizenDTO.FirstName, citizenDTO.LastName,
             citizenDTO.OtherNames, citizenDTO.NationalIdNumber, citizenDTO.Gender, citizenDTO.DOB,
-            citizenDTO.PlaceOfBirth, citizenDTO.Address, citizenDTO.DateOfIssue, citizenDTO.ExpiryDate,
-            citizenDTO.PublicKey
+            citizenDTO.PlaceOfBirth, citizenDTO.Address, citizenDTO.DateOfIssue, citizenDTO.ExpiryDate
         );
 
         var jwt = await _jwtGenerator.GenerateJwtAsync(citizen);  // generates signed jwt

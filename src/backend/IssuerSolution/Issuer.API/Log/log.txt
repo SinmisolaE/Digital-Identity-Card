@@ -1403,3 +1403,7 @@ System.ArgumentNullException: Value cannot be null. (Parameter 'logger')
 2025-11-03 15:20:07.210 +00:00 [INF] Executed endpoint 'Issuer.API.Controllers.IssuerController.CreateCitizenAsync (Issuer.API)'
 2025-11-03 15:20:07.211 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5142/issue - 200 null text/plain; charset=utf-8 88.7415ms
 2025-11-03 15:26:57.057 +00:00 [INF] Application is shutting down...
+2025-11-12 14:37:13.842 +00:00 [INF] Now listening on: http://localhost:5142
+2025-11-12 14:37:13.994 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-12 14:37:13.998 +00:00 [INF] Hosting environment: Development
+2025-11-12 14:37:13.999 +00:00 [INF] Content root path: /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.API
