@@ -56,3 +56,7 @@
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/obj/Debug/net9.0/ref/Verifier.API.dll
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/bin/Debug/net9.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/bin/Debug/net9.0/Pipelines.Sockets.Unofficial.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/bin/Debug/net9.0/StackExchange.Redis.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/VerifierSolution/Verifier.API/bin/Debug/net9.0/System.Diagnostics.DiagnosticSource.dll

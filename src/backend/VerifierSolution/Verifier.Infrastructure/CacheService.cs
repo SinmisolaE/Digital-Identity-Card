@@ -35,6 +35,7 @@ public class CacheService : ICacheService
             return null;
         }
 
+        _logger.LogInformation("key in cache");
         return response;
     }
 
