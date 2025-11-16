@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dGoyIE3RYuk=",
+  "dgSpecHash": "C0h3cv/UJF8=",
   "success": true,
   "projectFilePath": "/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Infrastructure/Issuer.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "/home/sola_g/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/home/sola_g/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/sola_g/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/9.0.9/microsoft.aspnetcore.authentication.jwtbearer.9.0.9.nupkg.sha512",
     "/home/sola_g/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

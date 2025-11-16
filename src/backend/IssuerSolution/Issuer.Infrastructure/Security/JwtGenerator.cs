@@ -14,28 +14,14 @@ public class JwtGenerator : IJwtGenerator
 {
     private readonly IRsaKeyService _rsa;
 
-    //Using Lazy initialization
-     /*
-    private readonly Lazy<RsaSecurityKey> _privateKey;
-
-    private readonly Lazy<string> _privateKeyPem;
-
-    private readonly Lazy<Task<string>> _publicKeyPem;
-    */
 
     private readonly ILogger<JwtGenerator> _logger;
 
 
     public JwtGenerator(IRsaKeyService rsa, ILogger<JwtGenerator> logger)
     {
-        //_logger.LogInformation("in constructor, therefore initializing rsa");
         _rsa = rsa;
 
-        /*
-        _privateKeyPem = await _rsa.GetPrivateKeyPem());
-        _publicKeyPem = new Lazy<Task<string>>(async () => await rsa.GetPublicKeyPem());
-
-        */
         _logger = logger;
     }
 
@@ -49,7 +35,6 @@ public class JwtGenerator : IJwtGenerator
         var privateKey = await _rsa.GetPrivateKey();
 
         System.Console.WriteLine();
-        //System.Console.WriteLine($"Private: {_privateKeyPem.Value}");
         System.Console.WriteLine();
         System.Console.WriteLine();
 
