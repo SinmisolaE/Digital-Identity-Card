@@ -30,3 +30,5 @@
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Infrastructure/obj/Debug/net9.0/refint/Issuer.Infrastructure.dll
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Infrastructure/obj/Debug/net9.0/Issuer.Infrastructure.pdb
 /home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Infrastructure/obj/Debug/net9.0/ref/Issuer.Infrastructure.dll
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Infrastructure/bin/Debug/net9.0/Issuer.Infrastructure.runtimeconfig.json
+/home/sola_g/Downloads/SWE/fyp/Digital-Identity-Card/src/backend/IssuerSolution/Issuer.Infrastructure/obj/Debug/net9.0/Issuer.Infrastructure.genruntimeconfig.cache
