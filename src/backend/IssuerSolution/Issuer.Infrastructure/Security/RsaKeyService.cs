@@ -18,7 +18,6 @@ public class RsaKeyService : IRsaKeyService
 {
 
     private readonly ITrustRegistryClient _trustRegistryClient;
-    //private readonly RSA rsa = RSA.Create(2048);
     private readonly ILogger<RsaKeyService> _logger;
 
     private readonly IConfiguration _configuration;
@@ -52,14 +51,6 @@ public class RsaKeyService : IRsaKeyService
 
             return privateKey;
         }
-
-
-
-        /*
-        _logger.LogInformation("Trying to get private key");
-        return new RsaSecurityKey(rsa.ExportParameters(true));
-
-        */
     }
 
     public async Task<string> GetPrivateKeyPem()
@@ -81,11 +72,6 @@ public class RsaKeyService : IRsaKeyService
         }
 
         return privateKeyString;
-
-        /*
-        _logger.LogInformation("Trying to get private key string");
-        return rsa.ExportPkcs8PrivateKeyPem();
-        */
     }
 
     public async Task<string> GenerateKeys()
@@ -133,36 +119,4 @@ public class RsaKeyService : IRsaKeyService
         
     }
     
-    /*
-
-    public async Task<string> GetPublicKeyPem()
-    {
-        var registryDTO = new RegistryDTO("gra", publicKey, "Active");
-
-
-
-
-        /*
-        _logger.LogInformation("Trying to get public key string");
-        var publicKey = rsa.ExportSubjectPublicKeyInfoPem();
-
-        _logger.LogInformation("Contacting registry");
-        try
-        {
-
-            if (!await _trustRegistryClient.EnsureRegistered(publicKey))
-            {
-                _logger.LogWarning("Registry not found");
-            }
-        }
-        catch (Exception e)
-        {
-            throw new Exception($"{e.Message}");
-        }
-
-        _logger.LogInformation("Returning publickey string");
-        return publicKey;
-    }
-        */
-
 }

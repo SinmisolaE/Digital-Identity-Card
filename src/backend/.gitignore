@@ -1,6 +1,6 @@
-**/appsettings.Development.json
-**/appsettings.Staging.json
+
 **/appsettings.*.json
+**/Log/log.txt
 
 **/bin/
 **/obj/
