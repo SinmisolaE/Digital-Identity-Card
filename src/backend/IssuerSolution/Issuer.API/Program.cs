@@ -2,6 +2,8 @@ using Issuer.Core.Interfaces;
 using Issuer.Core.Service;
 using Issuer.Infrastructure;
 using Issuer.Infrastructure.Data;
+using Issuer.Infrastructure.Model;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,10 +24,6 @@ builder.Services.AddHealthChecks();
 
 //builder.Logging.ClearProviders();
 
-
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-//builder.Services.AddOpenApi();
-
 builder.Services.AddSwaggerGen();
 
 
@@ -38,6 +36,13 @@ builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 
 builder.Services.AddSingleton<IRsaKeyService, RsaKeyService>();
 //builder.Services.AddScoped<IRsaKeyService, RsaKeyService>();
+
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<UserDbContext>(options =>
+    options.UseNpgsql(connectionString, b => b.MigrationsAssembly("Issuer.Infrastructure"))
+);
 
 builder.Services.AddHttpClient();
 
