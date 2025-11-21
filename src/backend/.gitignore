@@ -2,9 +2,9 @@
 **/appsettings.*.json
 
 #Log
-**/Log/
-*.log
+**/**/Log/
 
-**/bin/
-**/obj/
+
+**/**/bin/
+**/**/obj/
 

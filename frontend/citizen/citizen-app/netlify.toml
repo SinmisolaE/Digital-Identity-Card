@@ -1,6 +1,6 @@
 [build]
   base = "frontend/citizen/citizen-app"
-  publish = "build"
+  publish = "/build"
   command = "npm run build"
 
 
