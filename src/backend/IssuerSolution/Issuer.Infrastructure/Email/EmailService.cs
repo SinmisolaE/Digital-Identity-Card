@@ -31,6 +31,7 @@ public class EmailService : IEmailService
     {
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token)) return false;
 
+        // dummy message
         var body = $@"
         Hello,
 

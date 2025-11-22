@@ -6,6 +6,10 @@ namespace Issuer.Core.Data;
 
 public class User
 {
+    public User(string email)
+    {
+        Email = email;
+    }
 
     public enum SetStatus {ACTIVE, PENDING, INACTIVE};
     public enum SetRole {ADMIN, ISSUER};
@@ -32,6 +36,9 @@ public class User
 
     public DateOnly Creaded_At {get; private set;} = DateOnly.MinValue;
 
-    
+    public void AssignToken(string token)
+    {
+        this.Reset_password_token = token;
+    }
 
 }
