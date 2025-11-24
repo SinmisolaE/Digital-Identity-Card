@@ -1,3 +1,5 @@
+using Hangfire;
+using Hangfire.PostgreSql;
 using Issuer.Core.Interfaces;
 using Issuer.Core.Service;
 using Issuer.Infrastructure;
@@ -35,7 +37,6 @@ builder.Services.AddScoped<IIssuerService, IssuerService>();
 builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 
 builder.Services.AddSingleton<IRsaKeyService, RsaKeyService>();
-//builder.Services.AddScoped<IRsaKeyService, RsaKeyService>();
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -46,8 +47,15 @@ builder.Services.AddDbContext<UserDbContext>(options =>
 
 builder.Services.AddHttpClient();
 
-//add registry to db
+//add registry db
 builder.Services.AddHttpClient<ITrustRegistryClient, TrustRegistryClient>();
+
+
+// add hang fire to handle background processes
+builder.Services.AddHangfire(config => 
+    config.UsePostgreSqlStorage(connectionString)
+);
+builder.Services.AddHangfireServer();
 
 var app = builder.Build();
 
@@ -57,6 +65,8 @@ if (app.Environment.IsDevelopment())
     //app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseHangfireDashboard();
 }
 
 //app.UseHttpsRedirection(); 

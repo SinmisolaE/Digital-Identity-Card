@@ -3,6 +3,7 @@ using MailKit.Net.Smtp;
 using Issuer.Core.Interfaces.AuthService;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
+using Hangfire;
 
 namespace Issuer.Infrastructure.Email;
 
@@ -27,6 +28,8 @@ public class EmailService : IEmailService
 
 
     // Sends token to issuer email upon profiling
+    // Add automatic retries using hangfire if service goes down
+    [AutomaticRetry(Attempts = 5, DelaysInSeconds = new [] {30, 60, 120, 300, 600})]
     public async Task<bool> SendPasswordSetEmailAsync(string email, string token)
     {
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token)) return false;

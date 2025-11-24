@@ -1,23 +1,29 @@
 using System;
 using Issuer.Core.Data;
+using Issuer.Core.Events;
 using Issuer.Core.Interfaces;
 using Issuer.Core.Interfaces.AuthService;
+using Issuer.Core.Interfaces.Infrastructure;
 
 namespace Issuer.Core.Service.UserManagement;
 
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly ITokenProvider _tokenProvider;
     private readonly IEmailService _emailService;
     private readonly IPasswordHash _passwordHash;
+    private readonly IOutBoxService _outBoxService;
 
-    public UserService(IUserRepository userRepository, ITokenProvider tokenProvider, IEmailService emailService, IPasswordHash passwordHash)
+    public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ITokenProvider tokenProvider, IEmailService emailService, IPasswordHash passwordHash, IOutBoxService outBoxService)
     {
         _userRepository = userRepository;
+        _unitOfWork = unitOfWork;
         _tokenProvider = tokenProvider;
         _emailService = emailService;
         _passwordHash = passwordHash;
+        _outBoxService = outBoxService;
     }
 
     // Create a new User
@@ -33,7 +39,14 @@ public class UserService : IUserService
 
         var response = await _userRepository.AddUser(user);
 
-        await _emailService.SendPasswordSetEmailAsync(user.Email, token);
+        //create event
+        var userEvent = new UserCreatedEvent(user.Id, user.Email, user.ResetPasswordtoken);
+
+        // save event
+        await _outBoxService.SaveEventAsync(userEvent);
+
+        // save with a single write
+        await _unitOfWork.SaveEntitiesAsync();
 
         return true; 
 

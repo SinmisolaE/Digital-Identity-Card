@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace Issuer.Infrastructure.Model;
 
-public class UserDbContextFactory : IDesignTimeDbContextFactory<UserDbContext>
+public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
 {
-    public UserDbContext CreateDbContext(string[] args)
+    public AppDbContext CreateDbContext(string[] args)
     {
             // Build configuration
             var configuration = new ConfigurationBuilder()
@@ -17,11 +17,11 @@ public class UserDbContextFactory : IDesignTimeDbContextFactory<UserDbContext>
                 //.AddJsonFile("secrets.json")
                 .Build();
 
-            var optionsBuilder = new DbContextOptionsBuilder<UserDbContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             optionsBuilder.UseNpgsql(connectionString);
 
-            return new UserDbContext(optionsBuilder.Options);
+            return new AppDbContext(optionsBuilder.Options);
     }
 }

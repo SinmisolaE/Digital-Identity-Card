@@ -9,9 +9,9 @@ namespace Issuer.Infrastructure.Repository;
 public class UserRepository : IUserRepository
 {
     // user db
-    private readonly UserDbContext _context;
+    private readonly AppDbContext _context;
 
-    public UserRepository(UserDbContext context)
+    public UserRepository(AppDbContext context)
     {
         _context = context;
     }

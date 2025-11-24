@@ -30,7 +30,7 @@ public class User
     [Required]
     public SetStatus Status {get; private set;}
 
-    public string Reset_password_token {get; private set;} = string.Empty;
+    public string ResetPasswordtoken {get; private set;} = string.Empty;
 
     public DateOnly TokenExpiry {get; private set;}
 
@@ -38,7 +38,7 @@ public class User
 
     public void AssignToken(string token)
     {
-        this.Reset_password_token = token;
+        this.ResetPasswordtoken = token;
     }
 
 }
