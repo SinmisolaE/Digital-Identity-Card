@@ -4,6 +4,7 @@ using Issuer.Core.Events;
 using Issuer.Core.Interfaces;
 using Issuer.Core.Interfaces.AuthService;
 using Issuer.Core.Interfaces.Infrastructure;
+using Microsoft.Extensions.Logging;
 
 namespace Issuer.Core.Service.UserManagement;
 
@@ -15,8 +16,9 @@ public class UserService : IUserService
     private readonly IEmailService _emailService;
     private readonly IPasswordHash _passwordHash;
     private readonly IOutBoxService _outBoxService;
+    private readonly ILogger<UserService> _logger;
 
-    public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ITokenProvider tokenProvider, IEmailService emailService, IPasswordHash passwordHash, IOutBoxService outBoxService)
+    public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ITokenProvider tokenProvider, IEmailService emailService, IPasswordHash passwordHash, IOutBoxService outBoxService, ILogger<UserService> logger)
     {
         _userRepository = userRepository;
         _unitOfWork = unitOfWork;
@@ -24,6 +26,7 @@ public class UserService : IUserService
         _emailService = emailService;
         _passwordHash = passwordHash;
         _outBoxService = outBoxService;
+        _logger = logger;
     }
 
     // Create a new User
@@ -31,15 +34,18 @@ public class UserService : IUserService
     {
         var user = new User(email);
 
+        _logger.LogInformation("Generating password set token");
         var token = _tokenProvider.GeneratePasswordSetToken();
 
         string hashed_token = _passwordHash.HashPassword(token);
 
         user.AssignToken(token);
 
+        _logger.LogInformation("Creating user to db");
         var response = await _userRepository.AddUser(user);
 
         //create event
+        _logger.LogInformation("Creating user event");
         var userEvent = new UserCreatedEvent(user.Id, user.Email, user.ResetPasswordtoken);
 
         // save event
@@ -47,6 +53,8 @@ public class UserService : IUserService
 
         // save with a single write
         await _unitOfWork.SaveEntitiesAsync();
+
+        _logger.LogInformation("User saved successfully");
 
         return true; 
 

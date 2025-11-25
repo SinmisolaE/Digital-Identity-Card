@@ -10,6 +10,13 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Issuer.Infrastructure;
 
+/*
+  This JWT contains the citizen details (name, IDNumber, etc)
+  It uses an rsa key pair: 
+   private key signs the jwt - used by issuer
+   public key verifies the jwt - used by verifiers
+
+ */
 public class JwtGenerator : IJwtGenerator
 {
     private readonly IRsaKeyService _rsa;
@@ -25,7 +32,7 @@ public class JwtGenerator : IJwtGenerator
         _logger = logger;
     }
 
-    // Generate jwt for citizen details
+    // Generate jwt for citizen details signed with issuer's private key 
     public async Task<string> GenerateJwtAsync(Citizen citizen)
     {
         _logger.LogInformation("Trying to generate jwt");
@@ -40,6 +47,7 @@ public class JwtGenerator : IJwtGenerator
 
         //System.Console.WriteLine($"Public: {publicKey}");
 
+        _logger.LogInformation("Generating JWT signed by private key generated");
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[] {

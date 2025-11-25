@@ -27,7 +27,6 @@ public class OutBoxService : IOutBoxService
         );
 
         await _context.outBoxMessages.AddAsync(OutBoxMessage);
-        await _context.SaveChangesAsync();
 
         BackgroundJob.Enqueue<IEmailService>(x => 
             x.SendPasswordSetEmailAsync(
