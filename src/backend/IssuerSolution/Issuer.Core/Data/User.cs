@@ -31,7 +31,7 @@ public class User
     [Required]
     public SetStatus Status {get; private set;}
 
-    public string ResetPasswordtoken {get; private set;} = string.Empty;
+    public string ResetPasswordToken {get; private set;} = string.Empty;
 
     public DateTime TokenExpiry {get; private set;}
 
@@ -39,7 +39,7 @@ public class User
 
     public void AssignToken(string token)
     {
-        this.ResetPasswordtoken = token;
+        this.ResetPasswordToken = token;
         this.TokenExpiry = DateTime.UtcNow.AddHours(72);
     }
 

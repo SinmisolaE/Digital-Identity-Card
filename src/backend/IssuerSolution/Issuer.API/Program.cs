@@ -56,8 +56,10 @@ builder.Services.AddScoped<IPasswordHash, PasswordHash>();
 builder.Services.AddScoped<IOutBoxProcessorJob, OutBoxProcessorJob>();
 
 
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+Console.WriteLine($"Connection String: {connectionString}");
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString, b => b.MigrationsAssembly("Issuer.Infrastructure"))

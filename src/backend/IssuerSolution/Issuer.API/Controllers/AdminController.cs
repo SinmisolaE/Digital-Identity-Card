@@ -32,7 +32,7 @@ namespace Issuer.API.Controllers
                     return Ok("User Created Successfully!");
                 } else
                 {
-                    return BadRequest("User failed to creat!");
+                    return BadRequest("User failed to create!");
                 }
             } catch (Exception ex)
             {

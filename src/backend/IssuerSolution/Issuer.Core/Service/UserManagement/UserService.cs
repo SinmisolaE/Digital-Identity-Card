@@ -47,7 +47,7 @@ public class UserService : IUserService
 
         //create event
         _logger.LogInformation("Creating user event");
-        var userEvent = new UserCreatedEvent(new_user.Id, new_user.Email, new_user.ResetPasswordtoken);
+        var userEvent = new UserCreatedEvent(new_user.Id, new_user.Email, new_user.ResetPasswordToken);
 
         // save event
         await _outBoxService.SaveEventAsync(userEvent);

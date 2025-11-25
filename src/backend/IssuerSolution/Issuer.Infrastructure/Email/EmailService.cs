@@ -58,6 +58,7 @@ public class EmailService : IEmailService
 
         message.From.Add(new MailboxAddress("", _sender));
         message.To.Add(new MailboxAddress("", email));
+        message.Subject = "Password Setup Required";
         message.Body = new TextPart("plain")
         {
             

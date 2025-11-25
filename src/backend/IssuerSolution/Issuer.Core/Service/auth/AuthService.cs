@@ -26,11 +26,11 @@ public class AuthService
             throw new ArgumentNullException("Email or password not provided");
         }
 
-        var find_user = await _userRepository.FindUserByEmail(user.Email);
+        var findUser = await _userRepository.FindUserByEmail(user.Email);
 
-        if (find_user == null) throw new Exception("User doesn't exist");
+        if (findUser == null) throw new Exception("User doesn't exist");
 
-        if (_passwordHash.VerifyHash(user.Password, find_user.Hashed_Password))
+        if (_passwordHash.VerifyHash(user.Password, findUser.Hashed_Password))
         {
             return true;
         } else return false;
