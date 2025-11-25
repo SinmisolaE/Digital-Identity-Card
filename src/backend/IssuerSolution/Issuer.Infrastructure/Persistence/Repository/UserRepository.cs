@@ -22,8 +22,6 @@ public class UserRepository : IUserRepository
         {
             // adding user
             await _context.AddAsync(user);
-            await _context.SaveChangesAsync();
-
             return true;
         } catch (DbUpdateException)
         {

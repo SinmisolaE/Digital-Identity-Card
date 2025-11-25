@@ -53,7 +53,7 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<ITokenProvider, UserTokenProvider>();
 builder.Services.AddScoped<IPasswordHash, PasswordHash>();
 
-
+builder.Services.AddScoped<IOutBoxProcessorJob, OutBoxProcessorJob>();
 
 
 
@@ -76,7 +76,18 @@ builder.Services.AddHangfire(config =>
 );
 builder.Services.AddHangfireServer();
 
+
+
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+
+recurringJobManager.AddOrUpdate<IOutBoxProcessorJob>(
+    "process-outbox-messages",
+    job => job.ProcessOutBoxMessageAsync(),
+    "*/4 * * * *"
+);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

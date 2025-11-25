@@ -26,14 +26,7 @@ public class OutBoxService : IOutBoxService
             DateTime.UtcNow
         );
 
-        await _context.outBoxMessages.AddAsync(OutBoxMessage);
+        await _context.OutBoxMessages.AddAsync(OutBoxMessage);
 
-        BackgroundJob.Enqueue<IEmailService>(x => 
-            x.SendPasswordSetEmailAsync(
-                ((UserCreatedEvent)domainEvent).Email,
-                ((UserCreatedEvent)domainEvent).ResetPasswordToken
-            )
-        );
-        
     }
 }

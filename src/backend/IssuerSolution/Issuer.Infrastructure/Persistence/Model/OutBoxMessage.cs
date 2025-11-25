@@ -11,6 +11,8 @@ public class OutBoxMessage
         EventType = eventType;
         EventData = eventData;
         CreatedAt = createdAt;
+        ProcessedAt = null;
+        Error = null;
     }
 
     [Key]
@@ -19,5 +21,5 @@ public class OutBoxMessage
     public string EventData {get; set;}
     public DateTime CreatedAt {get; set;}
     public DateTime? ProcessedAt {get; set;}
-    public string Error {get; set;}
+    public string? Error {get; set;}
 }

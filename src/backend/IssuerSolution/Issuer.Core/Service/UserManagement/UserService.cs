@@ -1,5 +1,6 @@
 using System;
 using Issuer.Core.Data;
+using Issuer.Core.DTO.UserDTO;
 using Issuer.Core.Events;
 using Issuer.Core.Interfaces;
 using Issuer.Core.Interfaces.AuthService;
@@ -30,23 +31,23 @@ public class UserService : IUserService
     }
 
     // Create a new User
-    public async Task<bool> CreateUserAsync(string email)
+    public async Task<bool> CreateUserAsync(CreateUserRequest user)
     {
-        var user = new User(email);
+        var new_user = new User(user.Email, user.Role);
 
         _logger.LogInformation("Generating password set token");
         var token = _tokenProvider.GeneratePasswordSetToken();
 
         string hashed_token = _passwordHash.HashPassword(token);
 
-        user.AssignToken(token);
+        new_user.AssignToken(token);
 
         _logger.LogInformation("Creating user to db");
-        var response = await _userRepository.AddUser(user);
+        var response = await _userRepository.AddUser(new_user);
 
         //create event
         _logger.LogInformation("Creating user event");
-        var userEvent = new UserCreatedEvent(user.Id, user.Email, user.ResetPasswordtoken);
+        var userEvent = new UserCreatedEvent(new_user.Id, new_user.Email, new_user.ResetPasswordtoken);
 
         // save event
         await _outBoxService.SaveEventAsync(userEvent);

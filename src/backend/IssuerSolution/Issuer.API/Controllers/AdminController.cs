@@ -21,12 +21,12 @@ namespace Issuer.API.Controllers
         [HttpPost]
         public async Task<ActionResult<string>> CreateUser(CreateUserRequest user)
         {
-            if (user == null || user.Email == null) return BadRequest("Email not provided");
+            if (user == null || user.Email == null) return BadRequest("Email and role must be provided");
 
             try
             {
                 _logger.LogInformation("Trying to create new user");
-                var response = await _userService.CreateUserAsync(user.Email);
+                var response = await _userService.CreateUserAsync(user);
 
                 if (response) {
                     return Ok("User Created Successfully!");

@@ -1,10 +1,13 @@
 using System;
+using Issuer.Core.DTO.UserDTO;
 
 namespace Issuer.Core.Interfaces;
 
 public interface IUserService
 {
-    public Task<bool> CreateUserAsync(string email);
+    Task<bool> CreateUserAsync(CreateUserRequest user);
+    Task<bool> DeleteUserAsync(string email);
+
 
     
 }

@@ -6,9 +6,10 @@ namespace Issuer.Core.Data;
 
 public class User
 {
-    public User(string email)
+    public User(string email, SetRole role)
     {
         Email = email;
+        Role = role;
     }
 
     public enum SetStatus {ACTIVE, PENDING, INACTIVE};
@@ -32,13 +33,14 @@ public class User
 
     public string ResetPasswordtoken {get; private set;} = string.Empty;
 
-    public DateOnly TokenExpiry {get; private set;}
+    public DateTime TokenExpiry {get; private set;}
 
-    public DateOnly Creaded_At {get; private set;} = DateOnly.MinValue;
+    public DateTime Creaded_At {get; private set;} = DateTime.UtcNow;
 
     public void AssignToken(string token)
     {
         this.ResetPasswordtoken = token;
+        this.TokenExpiry = DateTime.UtcNow.AddHours(72);
     }
 
 }
