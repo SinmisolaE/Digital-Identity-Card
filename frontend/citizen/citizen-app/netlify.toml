@@ -1,16 +1,10 @@
 [build]
   base = "frontend/citizen/citizen-app"
-  publish = "frontend/citizen/citizen-app/build"
-  command = "cd frontend/citizen/citizen-app && npm run build"
+  publish = "build"
+  command = "npm run build"
 
-[[build.ignore]]
-  paths = [
-    "src/**",
-    "frontend/issuer/**",
-    "frontend/verifier/**",
-    "README.md",
-    "*.json"
-  ]
+[build.ignore]
+  paths = ["backend/**", "frontend/issuer/**", "frontend/verifier/**"]
 
 
 [[redirects]]
