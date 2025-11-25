@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{8BF30212-DAD7-4236-84CA-EE725DA0F519}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IssuerSolution", "IssuerSolution", "{9EE8ED0B-5898-4720-8A72-0CD21AE0EE86}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Issuer.API", "src\backend\IssuerSolution\Issuer.API\Issuer.API.csproj", "{95F19174-CCFD-4717-AD78-B14CBBF4D456}"
 EndProject
