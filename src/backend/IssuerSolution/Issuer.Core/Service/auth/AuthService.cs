@@ -18,7 +18,7 @@ public class AuthService
 
 
 
-    public async Task<bool> LoginAsync(UserRequest user)
+    public async Task<UserRequest?> LoginAsync(UserRequest user)
     {
         // verify details are passed
         if (string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
@@ -32,8 +32,8 @@ public class AuthService
 
         if (_passwordHash.VerifyHash(user.Password, findUser.Hashed_Password))
         {
-            return true;
-        } else return false;
+            return new UserResponse(findUser.Email, findUser.Role);
+        } else return null;
     }
 
       public Task<bool> SetUserPasswordAsync(string token, string newPassword)
