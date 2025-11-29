@@ -22,33 +22,36 @@ public class Citizen
     }
 
     [Required]
-    public string FirstName { get; set; } = string.Empty;
+    public string FirstName { get; private set; } = string.Empty;
 
     [Required]
-    public string LastName { get; set; } = string.Empty;
+    public string LastName { get; private set; } = string.Empty;
 
-    public string OtherNames { get; set; } = string.Empty;
+    public string OtherNames { get; private set; } = string.Empty;
 
     [Required]
     public string NationalIdNumber { get; init; } = string.Empty;
 
     [Required]
-    public string Gender { get; set; } = string.Empty;
+    public string Photo {get; private set;} = string.Empty;
 
     [Required]
-    public DateOnly DOB { get; set; }
+    public string Gender { get; private set; } = string.Empty;
 
     [Required]
-    public string PlaceOfBirth { get; set; } = string.Empty;
+    public DateOnly DOB { get; private set; }
 
     [Required]
-    public string Address { get; set; } = string.Empty;
+    public string PlaceOfBirth { get; private set; } = string.Empty;
 
     [Required]
-    public DateOnly DateOfIssue { get; set; }
+    public string Address { get; private set; } = string.Empty;
 
     [Required]
-    public DateOnly ExpiryDate { get; set; }
+    public DateOnly DateOfIssue { get; private set; }
+
+    [Required]
+    public DateOnly ExpiryDate { get; private set; }
 
     
 }
