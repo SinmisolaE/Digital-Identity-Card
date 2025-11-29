@@ -18,7 +18,7 @@ public class CitizenDTO
     public string NationalIdNumber { get; init; } = string.Empty;
 
     [Required]
-    public string Photo {get; private set;} = string.Empty;
+    public string Photo {get; set;} = string.Empty;
 
     public string Gender { get; set; } = string.Empty;
 
