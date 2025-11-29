@@ -33,7 +33,7 @@ public class Citizen
     public string NationalIdNumber { get; init; } = string.Empty;
 
     [Required]
-    public string Photo {get; private set;} = string.Empty;
+    public string Photo { get; set; } = string.Empty;
 
     [Required]
     public string Gender { get; private set; } = string.Empty;

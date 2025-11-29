@@ -55,8 +55,8 @@ public class AuthService
 
      public async Task<bool> SetUserPasswordAsync(string email, string token, string newPassword)
     {
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token)) throw new ArgumentNullException("Provide all arguments");
-
+        if (string.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email), "Email not provided");
+        if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(nameof(token), "Token not provided");
         var user = await _userRepository.FindUserByEmail(email);
 
         if (user == null) throw new Exception("User not found");

@@ -55,9 +55,7 @@ public class UserRepository : IUserRepository
     {
         var findUser = await _context.Users.FindAsync(user);
 
-        findUser.Hashed_Password = hashed_password;
-
-        SaveChangesAsync();
+        findUser.UpdatePassword(hashed_password);
     
         
         return true;
