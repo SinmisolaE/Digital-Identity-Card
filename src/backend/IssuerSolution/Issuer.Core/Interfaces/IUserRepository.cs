@@ -10,4 +10,6 @@ public interface IUserRepository
     Task<User> FindUserByEmail(string email);
 
     Task<bool> DeleteAsync(string email);
+    Task<bool> UpdatePasswordAsync(User user, string hashed_password);
+    Task SaveChangesAsync();
 }

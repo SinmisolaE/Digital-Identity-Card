@@ -17,5 +17,6 @@ public class UserResponse
 
     [Required]
     public string Role {get; set;} = string.Empty;
-    public object R { get; }
+
+    
 }

@@ -17,7 +17,11 @@ public class CitizenDTO
     [Required]
     public string NationalIdNumber { get; init; } = string.Empty;
 
+    [Required]
+    public string Photo {get; set;} = string.Empty;
+
     public string Gender { get; set; } = string.Empty;
+
 
     [Required]
     public DateOnly DOB { get; set; }

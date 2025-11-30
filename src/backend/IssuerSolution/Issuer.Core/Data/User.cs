@@ -43,4 +43,9 @@ public class User
         this.TokenExpiry = DateTime.UtcNow.AddHours(72);
     }
 
+    public void UpdatePassword(string password)
+    {
+        this.Hashed_Password = password;
+    }
+
 }
