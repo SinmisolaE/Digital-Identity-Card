@@ -39,13 +39,20 @@ public class User
 
     public void AssignToken(string token)
     {
-        this.ResetPasswordToken = token;
-        this.TokenExpiry = DateTime.UtcNow.AddHours(72);
+        ResetPasswordToken = token;
+        TokenExpiry = DateTime.UtcNow.AddHours(72);
     }
 
     public void UpdatePassword(string password)
     {
-        this.Hashed_Password = password;
+        Hashed_Password = password;
+        ClearResetToken();
+    }
+
+    public void ClearResetToken()
+    {
+        ResetPasswordToken = null;
+        TokenExpiry = DateTime.MinValue;
     }
 
 }

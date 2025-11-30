@@ -5,8 +5,6 @@ namespace Issuer.Core.Interfaces;
 
 public interface IAuthService
 {
-    Task<UserResponse> LoginAsync(UserRequest user);
-    Task<bool> SetUserPasswordAsync(string email, string token, string newPassword);
-
-    Task<bool> ConfirmTokenAsync(string email, string token);
+    Task<UserResponse?> LoginAsync(UserRequest user);
+    Task<bool> VerifyTokenAndSetUserPasswordAsync(string email, string token, string newPassword);
 }

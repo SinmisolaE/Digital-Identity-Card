@@ -6,7 +6,7 @@ using static Issuer.Core.Data.User;
 
 namespace Issuer.Core.Service.auth;
 
-public class AuthService
+public class AuthService : IAuthService
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHash _passwordHash;
@@ -37,30 +37,17 @@ public class AuthService
         } else return null;
     }
 
-    // confirm token for user
-    public async Task<bool> ConfirmTokenAsync(string email, string token)
-    {
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token)) throw new ArgumentNullException("Provide all arguments");
 
-        var user = await _userRepository.FindUserByEmail(email);
-
-        if (user == null) throw new Exception("User not found");
-
-        if (_passwordHash.VerifyHash(token, user.ResetPasswordToken))
-        {
-            if(DateTime.UtcNow < user.TokenExpiry)
-                return true;
-        }
-        return false;
-    }
-
-     public async Task<bool> SetUserPasswordAsync(string email, string token, string newPassword)
+     public async Task<bool> VerifyTokenAndSetUserPasswordAsync(string email, string token, string newPassword)
     {
         if (string.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email), "Email not provided");
         if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(nameof(token), "Token not provided");
+
         var user = await _userRepository.FindUserByEmail(email);
 
         if (user == null) throw new Exception("User not found");
+
+        // confirm token for user
 
         if (_passwordHash.VerifyHash(token, user.ResetPasswordToken))
         {
