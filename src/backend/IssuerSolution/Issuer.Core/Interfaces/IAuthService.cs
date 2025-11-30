@@ -7,4 +7,6 @@ public interface IAuthService
 {
     Task<UserResponse> LoginAsync(UserRequest user);
     Task<bool> SetUserPasswordAsync(string email, string token, string newPassword);
+
+    Task<bool> ConfirmTokenAsync(string email, string token);
 }

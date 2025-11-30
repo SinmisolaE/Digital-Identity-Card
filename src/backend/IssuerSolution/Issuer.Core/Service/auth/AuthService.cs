@@ -2,6 +2,7 @@ using System;
 using Issuer.Core.DTO.UserDTO;
 using Issuer.Core.Interfaces;
 using Issuer.Core.Interfaces.AuthService;
+using static Issuer.Core.Data.User;
 
 namespace Issuer.Core.Service.auth;
 
@@ -18,7 +19,7 @@ public class AuthService
 
 
 
-    public async Task<bool> LoginAsync(UserRequest user)
+    public async Task<UserResponse?> LoginAsync(UserRequest user)
     {
         // verify details are passed
         if (string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
@@ -32,8 +33,8 @@ public class AuthService
 
         if (_passwordHash.VerifyHash(user.Password, findUser.Hashed_Password))
         {
-            return true;
-        } else return false;
+            return new UserResponse(findUser.Email, Enum.GetName(typeof(SetRole), findUser.Role));
+        } else return null;
     }
 
     // confirm token for user
