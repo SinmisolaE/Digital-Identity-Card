@@ -36,8 +36,44 @@ public class AuthService
         } else return false;
     }
 
-      public Task<bool> SetUserPasswordAsync(string token, string newPassword)
+    // confirm token for user
+    public async Task<bool> ConfirmTokenAsync(string email, string token)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token)) throw new ArgumentNullException("Provide all arguments");
+
+        var user = await _userRepository.FindUserByEmail(email);
+
+        if (user == null) throw new Exception("User not found");
+
+        if (_passwordHash.VerifyHash(token, user.ResetPasswordToken))
+        {
+            if(DateTime.UtcNow < user.TokenExpiry)
+                return true;
+        }
+        return false;
+    }
+
+     public async Task<bool> SetUserPasswordAsync(string email, string token, string newPassword)
+    {
+        if (string.IsNullOrEmpty(email)) throw new ArgumentNullException(nameof(email), "Email not provided");
+        if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(nameof(token), "Token not provided");
+        var user = await _userRepository.FindUserByEmail(email);
+
+        if (user == null) throw new Exception("User not found");
+
+        if (_passwordHash.VerifyHash(token, user.ResetPasswordToken))
+        {
+            if(DateTime.UtcNow < user.TokenExpiry)
+            {
+                var hashed_password = _passwordHash.HashPassword(newPassword);
+
+                await _userRepository.UpdatePasswordAsync(user, hashed_password);
+
+                await _userRepository.SaveChangesAsync();
+
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -50,4 +50,19 @@ public class UserRepository : IUserRepository
     {
         return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
+
+    public async Task<bool> UpdatePasswordAsync(User user, string hashed_password)
+    {
+        var findUser = await _context.Users.FindAsync(user);
+
+        findUser.UpdatePassword(hashed_password);
+    
+        
+        return true;
+    }
+
+    public async Task SaveChangesAsync()
+    {
+        await _context.SaveChangesAsync();
+    }
 }

@@ -6,6 +6,12 @@
 [build.ignore]
   paths = ["backend/**", "frontend/issuer/**", "frontend/verifier/**"]
 
+[[ignore]]
+  paths = [
+    "backend/**",
+    "frontend/issuer/**", 
+    "frontend/verifier/**"
+  ]
 
 [[redirects]]
   from = "/*"

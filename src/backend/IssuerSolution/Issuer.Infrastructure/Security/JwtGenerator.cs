@@ -58,6 +58,7 @@ public class JwtGenerator : IJwtGenerator
                 new Claim("DOB", citizen.DOB.ToString()),
                 new Claim("Address", citizen.Address),
                 new Claim("Gender", citizen.Gender),
+                new Claim("Photo", citizen.Photo),
                 new Claim("DateOfIssue", citizen.DateOfIssue.ToString()),
                 new Claim("ExpiryDate", citizen.ExpiryDate.ToString()),
                 new Claim("PlaceOfBirth", citizen.PlaceOfBirth)
