@@ -12,5 +12,5 @@ public interface ITokenProvider
 
     public string GenerateJwt(User user);
 
-    public ClaimsPrincipal? ValidateJwtToken(string jwt);
+    //public ClaimsPrincipal? ValidateJwtToken(string jwt);
 }

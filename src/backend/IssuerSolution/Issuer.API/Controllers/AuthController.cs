@@ -1,5 +1,6 @@
 using Issuer.Core.DTO.UserDTO;
 using Issuer.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace Issuer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private readonly ILogger<AuthController> _logger;
@@ -19,7 +21,7 @@ namespace Issuer.API.Controllers
             _authService = authService;
         }
 
-        [HttpPost]
+        [HttpPost("/login")]
         public async Task<ActionResult<UserResponse>> Login(UserRequest user)
         {
             if (user == null || string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
@@ -43,7 +45,7 @@ namespace Issuer.API.Controllers
         }
     
         // Verify user's token and Update user's password
-        [HttpPost]
+        [HttpPost("/reset-password")]
         public async Task<ActionResult<bool>> UpdatePassword(UserPasswordChange userPasswordChange)
         { 
             if (userPasswordChange == null || string.IsNullOrEmpty(userPasswordChange.Email) || string.IsNullOrEmpty(userPasswordChange.Password)
@@ -59,7 +61,7 @@ namespace Issuer.API.Controllers
                 if (await _authService.VerifyTokenAndSetUserPasswordAsync(userPasswordChange.Email, userPasswordChange.Token, userPasswordChange.Password))
                 {
                     _logger.LogInformation($"Password set successfully for {userPasswordChange.Email} : {userPasswordChange.Password}");
-                    return Ok();
+                    return Ok("Password reset successfull");
                 }
                 return BadRequest("Token Invalid!");
             } catch (Exception ex)

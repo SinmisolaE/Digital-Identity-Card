@@ -1,9 +1,11 @@
+using System.Text;
 using Hangfire;
 using Hangfire.PostgreSql;
 using Issuer.Core.Interfaces;
 using Issuer.Core.Interfaces.AuthService;
 using Issuer.Core.Interfaces.Infrastructure;
 using Issuer.Core.Service;
+using Issuer.Core.Service.auth;
 using Issuer.Core.Service.UserManagement;
 using Issuer.Infrastructure;
 using Issuer.Infrastructure.Data;
@@ -12,7 +14,10 @@ using Issuer.Infrastructure.Model;
 using Issuer.Infrastructure.Persistence;
 using Issuer.Infrastructure.Repository;
 using Issuer.Infrastructure.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,7 +38,34 @@ builder.Services.AddHealthChecks();
 
 //builder.Logging.ClearProviders();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization using Bearer",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer "
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+}
+);
 
 
 //Add serilog to system
@@ -54,6 +86,30 @@ builder.Services.AddScoped<ITokenProvider, UserTokenProvider>();
 builder.Services.AddScoped<IPasswordHash, PasswordHash>();
 
 builder.Services.AddScoped<IOutBoxProcessorJob, OutBoxProcessorJob>();
+
+//auth
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+// JWT Auth
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]))
+
+            
+        };
+    });
+
+builder.Services.AddAuthorization();
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -103,12 +159,10 @@ if (app.Environment.IsDevelopment())
 
 //app.UseHttpsRedirection(); 
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.MapGet("/test", () => "Test working!");
 
 app.MapHealthChecks("/health");
 

@@ -51,7 +51,7 @@ public class User
 
     public void ClearResetToken()
     {
-        ResetPasswordToken = null;
+        ResetPasswordToken = "";
         TokenExpiry = DateTime.MinValue;
     }
 

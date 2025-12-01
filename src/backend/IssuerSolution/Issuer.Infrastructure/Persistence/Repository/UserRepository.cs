@@ -3,6 +3,7 @@ using Issuer.Core.Data;
 using Issuer.Core.Interfaces;
 using Issuer.Infrastructure.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Issuer.Infrastructure.Repository;
 
@@ -10,10 +11,12 @@ public class UserRepository : IUserRepository
 {
     // user db
     private readonly AppDbContext _context;
+    private readonly ILogger<UserRepository> _logger;
 
-    public UserRepository(AppDbContext context)
+    public UserRepository(AppDbContext context, ILogger<UserRepository> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     public async Task<bool> AddUser(User user)
@@ -54,14 +57,25 @@ public class UserRepository : IUserRepository
     // Update password
     public async Task<bool> UpdatePasswordAsync(User user, string hashed_password)
     {
-        var findUser = await _context.Users.FindAsync(user);
+            
+        var findUser = await _context.Users.FindAsync(user.Id);
+
+        if (findUser == null) return false;
 
         findUser.UpdatePassword(hashed_password);
         return true;
+        
     }
 
     public async Task SaveChangesAsync()
     {
-        await _context.SaveChangesAsync();
+        try
+        {
+            
+            await _context.SaveChangesAsync();
+        } catch (DbUpdateException ex)
+        {
+            _logger.LogError($"Error: {ex.Message}");
+        }
     }
 }

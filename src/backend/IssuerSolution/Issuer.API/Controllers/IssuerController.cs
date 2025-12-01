@@ -1,6 +1,7 @@
 using Issuer.API.DTO;
 using Issuer.Core.DTO;
 using Issuer.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace Issuer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class IssuerController : ControllerBase
     {
         private readonly IIssuerService _issuerService;
@@ -37,6 +39,7 @@ namespace Issuer.API.Controllers
 
         
         [HttpPost("/issue")]
+        [Authorize(Roles = "ISSUER")]
         public async Task<IActionResult> CreateCitizenAsync(CitizenDTO citizenDTO)
         {
             System.Console.WriteLine("hellooo");

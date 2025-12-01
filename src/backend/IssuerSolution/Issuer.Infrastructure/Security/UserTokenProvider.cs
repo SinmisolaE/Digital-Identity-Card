@@ -67,6 +67,7 @@ public class UserTokenProvider : ITokenProvider
     }
 
     // Checks if token is valid
+    /*
     public ClaimsPrincipal? ValidateJwtToken(string jwt)
     {
         if (string.IsNullOrEmpty(jwt)) return null;
@@ -91,7 +92,7 @@ public class UserTokenProvider : ITokenProvider
 
         return tokenHandler.ValidateToken(jwt, validationParameters, out _);
     }
-
+    */
 
     // Generate token to send to user for login
     public string GeneratePasswordSetToken()
