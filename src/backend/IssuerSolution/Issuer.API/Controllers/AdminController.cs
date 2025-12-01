@@ -18,7 +18,7 @@ namespace Issuer.API.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
+        [HttpPost("/create-user")]
         public async Task<ActionResult<string>> CreateUser(CreateUserRequest user)
         {
             if (user == null || user.Email == null) return BadRequest("Email and role must be provided");
@@ -29,7 +29,7 @@ namespace Issuer.API.Controllers
                 var response = await _userService.CreateUserAsync(user);
 
                 if (response) {
-                    return Ok("User Created Successfully!");
+                    return Ok("User Created Successfully! Email would be sent to user..");
                 } else
                 {
                     return BadRequest("User failed to create!");

@@ -4,6 +4,7 @@ using Issuer.Core.Interfaces;
 using Issuer.Core.Interfaces.AuthService;
 using Issuer.Core.Interfaces.Infrastructure;
 using Issuer.Core.Service;
+using Issuer.Core.Service.auth;
 using Issuer.Core.Service.UserManagement;
 using Issuer.Infrastructure;
 using Issuer.Infrastructure.Data;
@@ -54,6 +55,9 @@ builder.Services.AddScoped<ITokenProvider, UserTokenProvider>();
 builder.Services.AddScoped<IPasswordHash, PasswordHash>();
 
 builder.Services.AddScoped<IOutBoxProcessorJob, OutBoxProcessorJob>();
+
+//auth
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -107,8 +111,6 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.MapGet("/test", () => "Test working!");
 
 app.MapHealthChecks("/health");
 
