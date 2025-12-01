@@ -1,3 +1,4 @@
+using System.Text;
 using Hangfire;
 using Hangfire.PostgreSql;
 using Issuer.Core.Interfaces;
@@ -13,7 +14,9 @@ using Issuer.Infrastructure.Model;
 using Issuer.Infrastructure.Persistence;
 using Issuer.Infrastructure.Repository;
 using Issuer.Infrastructure.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -58,6 +61,27 @@ builder.Services.AddScoped<IOutBoxProcessorJob, OutBoxProcessorJob>();
 
 //auth
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+// JWT Auth
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]))
+
+            
+        };
+    });
+
+builder.Services.AddAuthorization();
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -107,7 +131,7 @@ if (app.Environment.IsDevelopment())
 
 //app.UseHttpsRedirection(); 
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

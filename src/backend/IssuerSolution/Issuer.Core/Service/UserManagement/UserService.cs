@@ -40,14 +40,14 @@ public class UserService : IUserService
 
         string hashed_token = _passwordHash.HashPassword(token);
 
-        new_user.AssignToken(token);
+        new_user.AssignToken(hashed_token);
 
         _logger.LogInformation("Creating user to db");
-        var response = await _userRepository.AddUser(new_user);
+        await _userRepository.AddUser(new_user);
 
         //create event
         _logger.LogInformation("Creating user event");
-        var userEvent = new UserCreatedEvent(new_user.Id, new_user.Email, new_user.ResetPasswordToken);
+        var userEvent = new UserCreatedEvent(new_user.Id, new_user.Email, token);
 
         // save event
         await _outBoxService.SaveEventAsync(userEvent);
