@@ -1,5 +1,6 @@
 using Issuer.Core.DTO.UserDTO;
 using Issuer.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace Issuer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AdminController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -19,6 +21,7 @@ namespace Issuer.API.Controllers
         }
 
         [HttpPost("/create-user")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<ActionResult<string>> CreateUser(CreateUserRequest user)
         {
             if (user == null || user.Email == null) return BadRequest("Email and role must be provided");
