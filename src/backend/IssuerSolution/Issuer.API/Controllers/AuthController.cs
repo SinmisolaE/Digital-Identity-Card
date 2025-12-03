@@ -39,8 +39,8 @@ namespace Issuer.API.Controllers
                     return Unauthorized("Email or password incorrect!");
                 }
                 return Ok(response);
-            } catch (Exception e) {
-                return BadRequest($"Error: {e.Message}");
+            } catch (Exception) {
+                return Unauthorized("Email or password incorrect!");
             }
         }
     

@@ -1,3 +1,4 @@
+using System.Net;
 using System.Text;
 using Hangfire;
 using Hangfire.PostgreSql;
@@ -17,8 +18,9 @@ using Issuer.Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 using Serilog;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,17 +42,38 @@ builder.Services.AddHealthChecks();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Description = "JWT Authorization using Bearer",
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
+    // add jwt token to swagger
 
-    options.EnableAnnotations();
+    var securityScheme = new OpenApiSecurityScheme
+    {
+        Name = "Jwt Authorization",
+        Description = "Enter your JWT token in this field",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = JwtBearerDefaults.AuthenticationScheme,
+        BearerFormat = "JWT"
+    };
+    
+    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, securityScheme);
+
+
+    // set up security requirement
+    var securityRequirement = new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = JwtBearerDefaults.AuthenticationScheme
+                }
+            },
+            []
+        }
+    };
+
+    options.AddSecurityRequirement(securityRequirement);
 }
 );
 
