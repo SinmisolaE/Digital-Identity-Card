@@ -36,11 +36,11 @@ namespace Issuer.API.Controllers
 
                 if (response == null)
                 {
-                    return BadRequest("Email or password incorrect!");
+                    return Unauthorized("Email or password incorrect!");
                 }
-                return new UserResponse(response.Email, response.Role);
-            } catch (Exception e) {
-                return BadRequest($"Error: {e.Message}");
+                return Ok(response);
+            } catch (Exception) {
+                return Unauthorized("Email or password incorrect!");
             }
         }
     

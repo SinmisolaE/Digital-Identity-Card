@@ -10,16 +10,18 @@ public class AuthService : IAuthService
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHash _passwordHash;
+    private readonly ITokenProvider _tokenProvider;
 
-    public AuthService(IUserRepository userRepository, IPasswordHash passwordHash)
+    public AuthService(IUserRepository userRepository, IPasswordHash passwordHash, ITokenProvider tokenProvider)
     {
         _userRepository = userRepository;
         _passwordHash = passwordHash;
+        _tokenProvider = tokenProvider;
     }
 
 
 
-    public async Task<UserResponse?> LoginAsync(UserRequest user)
+    public async Task<string?> LoginAsync(UserRequest user)
     {
         // verify details are passed
         if (string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
@@ -33,7 +35,9 @@ public class AuthService : IAuthService
 
         if (_passwordHash.VerifyHash(user.Password, findUser.Hashed_Password))
         {
-            return new UserResponse(findUser.Email, Enum.GetName(typeof(SetRole), findUser.Role));
+            var jwtString = _tokenProvider.GenerateJwt(findUser);
+
+            return jwtString;
         } else return null;
     }
 
