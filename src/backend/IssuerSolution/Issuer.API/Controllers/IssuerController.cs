@@ -9,7 +9,7 @@ namespace Issuer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "ISSUER")]
     public class IssuerController : ControllerBase
     {
         private readonly IIssuerService _issuerService;
