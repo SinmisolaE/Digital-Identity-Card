@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from 'axios';
 import {QRCodeSVG} from 'qrcode.react';
 
@@ -19,6 +19,8 @@ const Main = () => {
     const [dateOfIssue, setDateOfIssue] = useState(Date);
     const [expiryDate, setExpiryDate] = useState(Date);
     const [publicKey, setPublicKey] = useState('');
+    const [photo, setPhoto] = useState('');
+    const [photoPreview, setPhotoPreview] = useState('');
 
     const [displaySuccess, setDisplaySuccess] = useState(false);
     const [qrScanned, setQrScanned] = useState(false);
@@ -27,6 +29,8 @@ const Main = () => {
 
     const [content, setContent] = useState('');
     
+    const fileInputRef = useRef(null);
+    const cameraInputRef = useRef(null);
 
 
     const displayModal = () => {
@@ -45,11 +49,52 @@ const Main = () => {
         setDateOfIssue('');
         setExpiryDate('');
         setPublicKey('');
+        setPhoto('');
+        setPhotoPreview('');
 
         setError('');
 
         setModal(false);
     }
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                setError('Photo size should be less than 5MB');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64String = reader.result;
+                setPhoto(base64String);
+                setPhotoPreview(base64String);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleCameraCapture = (e) => {
+        cameraInputRef.current.click();
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64String = reader.result;
+                setPhoto(base64String);
+                setPhotoPreview(base64String);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const removePhoto = () => {
+        setPhoto('');
+        setPhotoPreview('');
+        if (fileInputRef.current) fileInputRef.current.value = '';
+        if (cameraInputRef.current) cameraInputRef.current.value = '';
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -74,7 +119,8 @@ const Main = () => {
             "Address": address,
             "DateOfIssue": dateOfIssue,
             "ExpiryDate": expiryDate,
-            "PublicKey": publicKey
+            "PublicKey": publicKey,
+            "Photo": photo
         };
         
         try {
@@ -289,6 +335,63 @@ const Main = () => {
                                                     />
                                                 </div>
 
+                                                <div className="mb-3">
+                                                    <label className="form-label">Photo</label>
+                                                    <div className="d-flex gap-2 mb-2">
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-outline-primary"
+                                                            onClick={() => fileInputRef.current?.click()}
+                                                        >
+                                                            📁 Upload Photo
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-outline-primary"
+                                                            onClick={() => cameraInputRef.current?.click()}
+                                                        >
+                                                            📷 Take Photo
+                                                        </button>
+                                                    </div>
+                                                    <input
+                                                        ref={fileInputRef}
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onChange={handleFileChange}
+                                                        style={{ display: 'none' }}
+                                                    />
+                                                    <input
+                                                        ref={cameraInputRef}
+                                                        type="file"
+                                                        accept="image/*"
+                                                        capture="environment"
+                                                        onChange={handleCameraCapture}
+                                                        style={{ display: 'none' }}
+                                                    />
+                                                    {photoPreview && (
+                                                        <div className="mt-2 position-relative d-inline-block">
+                                                            <img
+                                                                src={photoPreview}
+                                                                alt="Preview"
+                                                                style={{
+                                                                    maxWidth: '200px',
+                                                                    maxHeight: '200px',
+                                                                    objectFit: 'cover',
+                                                                    borderRadius: '8px'
+                                                                }}
+                                                            />
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-danger btn-sm position-absolute top-0 end-0 m-1"
+                                                                onClick={removePhoto}
+                                                                style={{ fontSize: '0.75rem' }}
+                                                            >
+                                                                ✕
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+
                                                 
 
                                                 <div className="mb-3">
@@ -366,17 +469,7 @@ const Main = () => {
                                                 </div>
 
 
-                                                <div className="mb-3">
-                                                    <label className="form-label">Verification Key</label>
-                                                    <input 
-                                                        type="text" 
-                                                        value={publicKey}
-                                                        onChange={(e) => setPublicKey(e.target.value)}
-                                                        className="form-control"
-                                                        placeholder="Enter verification key"
-                                                        required
-                                                    />
-                                                </div>
+                                                
 
                                             </form>
                                         </div>
