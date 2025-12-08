@@ -5,12 +5,13 @@ namespace Verifier.Core.Enitity;
 
 public class Citizen
 {
-    public Citizen(string firstName, string lastName, string otherNames, string nationalIdNumber, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate)
+    public Citizen(string firstName, string lastName, string otherNames, string nationalIdNumber, string photo, string gender, DateOnly dOB, string placeOfBirth, string address, DateOnly dateOfIssue, DateOnly expiryDate)
     {
         FirstName = firstName;
         LastName = lastName;
         OtherNames = otherNames;
         NationalIdNumber = nationalIdNumber;
+        Photo = photo;
         Gender = gender;
         DOB = dOB;
         PlaceOfBirth = placeOfBirth;
@@ -30,6 +31,9 @@ public class Citizen
 
     [Required]
     public string NationalIdNumber { get; init; } = string.Empty;
+     
+    [Required]
+    public string Photo {get; set;} = string.Empty;
 
     public string Gender { get; set; } = string.Empty;
 

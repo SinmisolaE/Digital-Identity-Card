@@ -93,7 +93,7 @@ public class VerifierService : IVerifierService
         
 
         var citizenDTO = new CitizenDTO(citizen.FirstName, citizen.LastName, citizen.OtherNames,
-            citizen.NationalIdNumber, citizen.Gender, citizen.DOB, citizen.PlaceOfBirth, citizen.Address,
+            citizen.NationalIdNumber, citizen.Photo, citizen.Gender, citizen.DOB, citizen.PlaceOfBirth, citizen.Address,
             citizen.DateOfIssue, citizen.ExpiryDate
         );
 
