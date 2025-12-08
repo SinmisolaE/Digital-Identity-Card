@@ -113,14 +113,15 @@ const Main = () => {
             "LastName": lastName,
             "OtherNames": otherNames,
             "NationalIdNumber": nationalIdNumber,
+            "Photo": photo,
             "Gender": gender,
             "DOB": dob,
             "PlaceOfBirth": placeOfBirth,
             "Address": address,
             "DateOfIssue": dateOfIssue,
             "ExpiryDate": expiryDate,
-            "PublicKey": publicKey,
-            "Photo": photo
+            "PublicKey": publicKey
+            
         };
         
         try {
@@ -139,6 +140,7 @@ const Main = () => {
             
 
             if (response.status === 200) {
+                console.log(formData);
                 setDisplaySuccess(true);
                 console.log(response?.data);
                 setContent(response?.data);

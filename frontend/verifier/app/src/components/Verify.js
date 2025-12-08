@@ -244,7 +244,9 @@ const Verify = () => {
                                     <div className="card-body">
                                         <div className="row">
                                             <div className="col-md-4 text-center mb-3">
+                                                {console.log(userData.photo)}
                                                 {userData.photo ? (
+                                                    
                                                     <img 
                                                         src={userData.photo} 
                                                         alt="Profile" 

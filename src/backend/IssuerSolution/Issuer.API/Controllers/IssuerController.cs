@@ -9,7 +9,7 @@ namespace Issuer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "ISSUER")]
+    //[Authorize(Roles = "ISSUER")]
     public class IssuerController : ControllerBase
     {
         private readonly IIssuerService _issuerService;
@@ -39,7 +39,7 @@ namespace Issuer.API.Controllers
 
         
         [HttpPost("/issue")]
-        [Authorize(Roles = "ISSUER")]
+        //[Authorize(Roles = "ISSUER")]
         public async Task<IActionResult> CreateCitizenAsync(CitizenDTO citizenDTO)
         {
             System.Console.WriteLine("hellooo");
