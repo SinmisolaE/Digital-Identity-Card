@@ -38,7 +38,6 @@ builder.Services.AddEndpointsApiExplorer(); // ← For Minimal APIs
 builder.Services.AddHealthChecks();
 
 
-//builder.Logging.ClearProviders();
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -126,10 +125,10 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 Console.WriteLine($"Connection String: {connectionString}");
 
-
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString, b => b.MigrationsAssembly("Issuer.Infrastructure"))
 );
+
 
 builder.Services.AddHttpClient();
 

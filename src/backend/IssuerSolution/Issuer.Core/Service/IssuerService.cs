@@ -29,7 +29,7 @@ public class IssuerService : IIssuerService
         // Contains all citizen's info
         var citizen = new Citizen(
             citizenDTO.FirstName, citizenDTO.LastName,
-            citizenDTO.OtherNames, citizenDTO.NationalIdNumber, citizenDTO.Gender, citizenDTO.DOB,
+            citizenDTO.OtherNames, citizenDTO.NationalIdNumber, citizenDTO.Photo, citizenDTO.Gender, citizenDTO.DOB,
             citizenDTO.PlaceOfBirth, citizenDTO.Address, citizenDTO.DateOfIssue, citizenDTO.ExpiryDate
         );
 
