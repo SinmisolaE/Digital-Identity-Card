@@ -3,6 +3,7 @@ using Serilog;
 using TrustRegistryService.Core.Interfaces;
 using TrustRegistryService.Core.Services;
 using TrustRegistryService.Infrastructure.Data;
+using TrustRegistryService.Infrastructure.Middleware;
 using TrustRegistryService.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,6 +46,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     //app.MapOpenApi();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
