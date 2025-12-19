@@ -2,6 +2,7 @@ using Serilog;
 using Verifier.Core.Interfaces;
 using Verifier.Core.Services;
 using Verifier.Infrastructure;
+using Verifier.Infrastructure.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,6 +57,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseSwagger();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 //app.UseHttpsRedirection();
 
