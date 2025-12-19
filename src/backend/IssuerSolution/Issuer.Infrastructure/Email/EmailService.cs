@@ -50,7 +50,8 @@ public class EmailService : IEmailService
         If you didn't request this reset, please ignore this email.
 
         Thanks,
-        The App Team";
+        The App Team
+        Digital National ID Solution";
 
         // Generate message
 
