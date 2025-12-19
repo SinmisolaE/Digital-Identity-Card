@@ -11,6 +11,7 @@ using Issuer.Core.Service.UserManagement;
 using Issuer.Infrastructure;
 using Issuer.Infrastructure.Data;
 using Issuer.Infrastructure.Email;
+using Issuer.Infrastructure.Middleware;
 using Issuer.Infrastructure.Model;
 using Issuer.Infrastructure.Persistence;
 using Issuer.Infrastructure.Repository;
@@ -155,6 +156,8 @@ recurringJobManager.AddOrUpdate<IOutBoxProcessorJob>(
     job => job.ProcessOutBoxMessageAsync(),
     "*/4 * * * *"
 );
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

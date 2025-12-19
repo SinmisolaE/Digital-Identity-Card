@@ -1,3 +1,4 @@
+using System.Security.Authentication;
 using Issuer.Core.DTO.UserDTO;
 using Issuer.Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -39,8 +40,10 @@ namespace Issuer.API.Controllers
                     return Unauthorized("Email or password incorrect!");
                 }
                 return Ok(response);
-            } catch (Exception) {
-                return Unauthorized("Email or password incorrect!");
+            } catch (AuthenticationException ex) {
+                return Unauthorized(ex.Message);
+            } catch (Exception ex) {
+                return Unauthorized(ex.Message);
             }
         }
     
