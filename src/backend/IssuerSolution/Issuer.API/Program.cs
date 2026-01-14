@@ -147,6 +147,7 @@ builder.Services.AddHangfireServer();
 
 
 var app = builder.Build();
+app.UseStaticFiles();
 
 using var scope = app.Services.CreateScope();
 var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();

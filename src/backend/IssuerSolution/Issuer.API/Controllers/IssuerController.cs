@@ -57,7 +57,7 @@ namespace Issuer.API.Controllers
 
                 _logger.LogInformation("jwt is being sent");
 
-
+                System.Console.WriteLine(jwt);
                 return Ok(jwt);
             }
             catch (ArgumentNullException e)
@@ -72,6 +72,18 @@ namespace Issuer.API.Controllers
                 return BadRequest(e.Message);
             }
             
+        }
+    
+        [HttpGet("/api/photos/{filename}")]
+        public IActionResult GetPhoto(string filename)
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "photos", filename);
+            
+            if (!System.IO.File.Exists(filePath))
+                return NotFound();
+            
+            var imageBytes = System.IO.File.ReadAllBytes(filePath);
+            return File(imageBytes, "image/jpeg");
         }
     }
 }

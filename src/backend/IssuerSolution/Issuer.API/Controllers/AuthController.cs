@@ -39,7 +39,10 @@ namespace Issuer.API.Controllers
                 {
                     return Unauthorized("Email or password incorrect!");
                 }
-                return Ok(response);
+                return Ok(new {
+                    success =  true,
+                    data = response
+                });
             } catch (AuthenticationException ex) {
                 return Unauthorized(ex.Message);
             } catch (Exception ex) {

@@ -18,7 +18,6 @@ const Main = () => {
     const [address, setAddress] = useState('');
     const [dateOfIssue, setDateOfIssue] = useState(Date);
     const [expiryDate, setExpiryDate] = useState(Date);
-    const [publicKey, setPublicKey] = useState('');
     const [photo, setPhoto] = useState('');
     const [photoPreview, setPhotoPreview] = useState('');
 
@@ -48,7 +47,6 @@ const Main = () => {
         setAddress('');
         setDateOfIssue('');
         setExpiryDate('');
-        setPublicKey('');
         setPhoto('');
         setPhotoPreview('');
 
@@ -56,6 +54,7 @@ const Main = () => {
 
         setModal(false);
     }
+    
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -74,7 +73,104 @@ const Main = () => {
             reader.readAsDataURL(file);
         }
     };
+/*
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        // Check file size
+        if (file.size > 5 * 1024 * 1024) { // 5MB limit
+            setError('Photo size should be less than 5MB');
+            return;
+        }
+        
+        // Clear any previous errors
+        setError('');
+        
+        try {
+            // Compress the image for QR code
+            const compressedImage = await compressImageForQR(file);
+            
+            // Also keep a higher quality version for preview
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64String = reader.result;
+                setPhoto(compressedImage); // Use compressed for QR
+                setPhotoPreview(base64String); // Use original for preview
+            };
+            reader.readAsDataURL(file);
+            
+        } catch (error) {
+            setError('Failed to process image. Please try again.');
+            console.error('Image processing error:', error);
+        }
+    };
 
+    const compressImageForQR = (file, maxWidth = 64, maxHeight = 64, quality = 0.2) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            const reader = new FileReader();
+            
+            reader.onload = (e) => {
+                img.src = e.target.result;
+                
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Calculate dimensions while maintaining aspect ratio
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width = Math.round((width * maxHeight) / height);
+                            height = maxHeight;
+                        }
+                    }
+                    
+                    // Set canvas dimensions
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    // Draw and compress image
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    // Try multiple formats to find smallest
+                    let compressedBase64 = canvas.toDataURL('image/webp', quality);
+                    
+                    // Fallback to JPEG if WebP is too large or not supported
+                    if (compressedBase64.length > 3 * 1024) { // More than 3KB
+                        compressedBase64 = canvas.toDataURL('image/jpeg', quality * 0.7);
+                    }
+                    
+                    // If still too large, reduce quality further
+                    if (compressedBase64.length > 5 * 1024) { // More than 5KB
+                        compressedBase64 = canvas.toDataURL('image/jpeg', 0.1);
+                    }
+                    
+                    resolve(compressedBase64);
+                };
+                
+                img.onerror = () => {
+                    reject(new Error('Failed to load image'));
+                };
+            };
+            
+            reader.onerror = () => {
+                reject(new Error('Failed to read file'));
+            };
+            
+            reader.readAsDataURL(file);
+        });
+    };
+
+    */
     const handleCameraCapture = (e) => {
         cameraInputRef.current.click();
         const file = e.target.files[0];
@@ -120,7 +216,6 @@ const Main = () => {
             "Address": address,
             "DateOfIssue": dateOfIssue,
             "ExpiryDate": expiryDate,
-            "PublicKey": publicKey
             
         };
         
@@ -220,8 +315,8 @@ const Main = () => {
                                     >
                                     <QRCodeSVG
                                         value={JSON.stringify({jwt: content})}
-                                        size={Math.min(250, window.innerWidth * 0.8)}
-                                        level="M"
+                                        size={400}//{Math.min(250, window.innerWidth * 0.8)}
+                                        level="H"
                                         includeMargin={true}
                                     />
                                 </div>

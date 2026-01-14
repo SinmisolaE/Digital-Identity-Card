@@ -16,12 +16,12 @@ const Homepage = () => {
         e.preventDefault();
         setLoading(true);
 
-        if ((email === "admin@gmail.com") && (password === "admin")) {
-            navigate("./issue");
-        }
-        
         try {
-            const response = await axios.post(`http`, {
+            if ((email === "admin@gmail.com") && (password === "admin")) {
+                navigate("./issue");
+            }
+        
+           /* const response = await axios.post('http://localhost:5091/issuer/issue', {
                 email, 
                 password
             });
@@ -34,7 +34,7 @@ const Homepage = () => {
             } else {
                 setError("email or password incorrect");
                 setLoading(false);
-            }
+            }*/
         } catch(error) {
             if (error.response) {
                 setError(error.response.data.message || 'Login failed')

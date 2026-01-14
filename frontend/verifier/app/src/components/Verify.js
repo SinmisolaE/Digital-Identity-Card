@@ -90,6 +90,7 @@ const Verify = () => {
                 if (status == 'verified' && citizenData) {
                     setVerificationStatus('verified');
                     setUserData(citizenData);
+                    console.log(citizenData.photo);
                 }else if (status === 'pending' && pollingCountRef.current < 50) {
                     setTimeout(() => poll(), 2000);
                 } else if (status === 'failed') {
@@ -99,6 +100,8 @@ const Verify = () => {
                 }else {
                     setVerificationStatus('failed');
                 }
+
+
                     
             } catch (err) {
                 //setPollingCount(prev => prev + 1);
@@ -246,9 +249,9 @@ const Verify = () => {
                                             <div className="col-md-4 text-center mb-3">
                                                 {console.log(userData.photo)}
                                                 {userData.photo ? (
-                                                    
+                                                
                                                     <img 
-                                                        src={userData.photo} 
+                                                        src={`http://localhost:5091/issuer${userData.photo}`} 
                                                         alt="Profile" 
                                                         className="img-thumbnail rounded-circle"
                                                         style={{width: '100px', height: '100px', objectFit: 'cover'}}
