@@ -17,7 +17,8 @@ Log.Logger = new LoggerConfiguration()
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
-//
+// health check
+builder.Services.AddHealthChecks();;
 
 builder.Services.AddOpenApi();
 
@@ -54,5 +55,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/health");
 
 app.Run();

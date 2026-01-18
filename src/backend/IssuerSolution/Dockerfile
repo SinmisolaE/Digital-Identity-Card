@@ -1,5 +1,3 @@
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
-
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
@@ -18,13 +16,13 @@ FROM build AS publish
 RUN dotnet publish "Issuer.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 
-FROM final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
 EXPOSE 8080
 
-RUN adduser --disabled-password=true --home /app --gecos '' appUser & chown -R appUser:appUser /app
+RUN useradd -m -d /app appUser && chown -R appUser:appUser /app
 USER appUser
 
 ENTRYPOINT ["dotnet", "Issuer.API.dll"]

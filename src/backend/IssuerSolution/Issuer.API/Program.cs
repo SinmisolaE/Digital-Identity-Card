@@ -179,4 +179,11 @@ app.MapControllers();
 
 app.MapHealthChecks("/health");
 
+// Apply EF Core migrations on startup to ensure DB schema is up to date
+using (var migrationScope = app.Services.CreateScope())
+{
+    var dbContext = migrationScope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}
+
 app.Run();

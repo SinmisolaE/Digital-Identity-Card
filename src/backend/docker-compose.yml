@@ -1,0 +1,147 @@
+
+services:
+  # gateway
+  gateway:
+    build:
+      context: ./Gateway
+      dockerfile: Dockerfile
+
+    ports:
+      - "8080:80"
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+
+    depends_on:
+      - issuer
+      - verifier
+      - trust-registry
+
+    networks:
+      - microservice-net
+
+  # issuer api
+  issuer:
+    build:
+      context: ./IssuerSolution
+      dockerfile: Dockerfile
+    
+    expose:
+      - "80"
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - Jwt__Secret=${JWT_SECRET}
+      - Jwt__Issuer=${JWT_ISSUER}
+      - Jwt__Audience=${JWT_AUDIENCE}
+      - Jwt__ExpirationToken=${JWT_EXPIRATION}
+      - RSA_PRIVATE_KEY=${RSA_PRIVATE_KEY}
+      - Email__Sender=${EMAIL_SENDER}
+      - Email__password=${EMAIL_PASSWORD}
+      - Email__smtpHost=${SMTP_HOST}
+      - Email__smtpPort=${SMTP_PORT}
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+      command: >
+        sh -c "
+          echo 'Waiting for database...' &&
+          sleep 10 &&
+          dotnet Issuer.API.dll
+        "
+
+    networks:
+      - microservice-net
+
+  # trust registry api
+  trust-registry:
+    build:
+      context: ./TrustRegistrySolution
+      dockerfile: Dockerfile
+    
+    expose:
+      - "80"
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings_DefaultConnection=Server=mysql;Database=${MYSQL_DB};User=${MYSQL_USER};Password=${MYSQL_PASSWORD};SslMode=None
+
+    depends_on:
+      - mysql
+       
+
+    networks:
+      - microservice-net
+
+  # verifier api
+  verifier:
+    build:
+      context: ./VerifierSolution
+      dockerfile: Dockerfile
+
+    expose: 
+      - "80"
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+    
+    networks:
+      - microservice-net
+
+  # Postgres database
+  postgres:
+    image: postgres:15
+    container_name: issuer_postgres
+
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    networks:
+      - microservice-net
+
+
+  # MySQL database
+  mysql:
+    image: mysql:8.0
+    container_name: trust-registry_mysql
+
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DB}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+    
+    networks:
+      - microservice-net
+
+networks:
+  microservice-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    name: issuer_postgres_data
+
+  mysql_data:
+    name: trust-registry_mysql_data

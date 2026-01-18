@@ -1,6 +1,6 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 WORKDIR /src
 COPY ["Verifier.API/Verifier.API.csproj", "Verifier.API/"]
@@ -22,7 +22,7 @@ COPY --from=build /app/publish .
 EXPOSE 8080
 EXPOSE 8081
 
-RUN adduser --disabled-password=true --home /app --gecos '' appUser && chown -R appUser:appUser /app
+RUN useradd -m -d /app appUser && chown -R appUser:appUser /app
 USER appUser
 
 ENTRYPOINT ["dotnet", "Verifier.API.dll"]

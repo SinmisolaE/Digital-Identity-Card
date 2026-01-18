@@ -1,6 +1,7 @@
 using System;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Issuer.Infrastructure.Middleware;
 
@@ -8,8 +9,11 @@ public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public ExceptionMiddleware(RequestDelegate next)
+    private readonly ILogger<ExceptionMiddleware> _logger;                                                                                                                                                                                                    
+
+    public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
     {
+        _logger = logger;
         _next = next;
     }
 
@@ -26,6 +30,7 @@ public class ExceptionMiddleware
 
     public Task HandleExceptionAsync(HttpContext httpContext, Exception exception)
     {
+        _logger.LogError(exception, "an error occurred oo");
         httpContext.Response.ContentType = "application/json";
 
         httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
