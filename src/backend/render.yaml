@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: gateway
+    env: docker
+    dockerfilePath: ./Gateway/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+
+      - key: ISSUER_URL
+        value: http://issuer:80
+
+      - key: VERIFIER_URL
+        value: http://verifier:80
+
+      - key: TRUST_REGISTRY_URL
+        value: http://trust-registry:80
+
+  - type: private
+    name: issuer
+    env: docker
+    dockerfilePath: ./IssuerSolution/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+
+  - type: private
+    name: verifier
+    env: docker
+    dockerfilePath: ./VerifierSolution/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+
+  - type: private
+    name: trust-registry
+    env: docker
+    dockerfilePath: ./TrustRegistrySolution/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production

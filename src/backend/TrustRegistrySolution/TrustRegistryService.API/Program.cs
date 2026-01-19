@@ -27,8 +27,7 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<TRDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
-    b => b.MigrationsAssembly("TrustRegistryService.Infrastructure"))
+    options.UseNpgsql(connectionString, b => b.MigrationsAssembly("TrustRegistryService.Infrastructure"))
 );
 
 
@@ -57,5 +56,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapHealthChecks("/health");
+
+
+// Apply EF Core migrations on startup to ensure DB schema is up to date
+using (var migrationScope = app.Services.CreateScope())
+{
+    var dbContext = migrationScope.ServiceProvider.GetRequiredService<TRDbContext>();
+    dbContext.Database.Migrate();
+}
 
 app.Run();

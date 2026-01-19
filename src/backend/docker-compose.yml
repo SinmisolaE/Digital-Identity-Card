@@ -48,12 +48,12 @@ services:
       postgres:
         condition: service_healthy
 
-      command: >
-        sh -c "
-          echo 'Waiting for database...' &&
-          sleep 10 &&
-          dotnet Issuer.API.dll
-        "
+    command: >
+      sh -c "
+        echo 'Waiting for database...' &&
+        sleep 10 &&
+        dotnet Issuer.API.dll
+      "
 
     networks:
       - microservice-net
@@ -70,11 +70,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionStrings_DefaultConnection=Server=mysql;Database=${MYSQL_DB};User=${MYSQL_USER};Password=${MYSQL_PASSWORD};SslMode=None
+      - ConnectionStrings__DefaultConnection=Host=trust-registry-postgres;Database=${TRUST_REGISTRY_POSTGRES_DB};Username=${TRUST_REGISTRY_POSTGRES_USER};Password=${TRUST_REGISTRY_POSTGRES_PASSWORD}
 
     depends_on:
-      - mysql
-       
+      trust-registry-postgres:
+        condition: service_healthy
 
     networks:
       - microservice-net
@@ -118,19 +118,24 @@ services:
       - microservice-net
 
 
-  # MySQL database
-  mysql:
-    image: mysql:8.0
-    container_name: trust-registry_mysql
+  # PostgreSQL database for Trust Registry
+  trust-registry-postgres:
+    image: postgres:15
+    container_name: trust-registry_postgres
 
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DB}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - POSTGRES_DB=${TRUST_REGISTRY_POSTGRES_DB}
+      - POSTGRES_USER=${TRUST_REGISTRY_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${TRUST_REGISTRY_POSTGRES_PASSWORD}
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $TRUST_REGISTRY_POSTGRES_USER -d $TRUST_REGISTRY_POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
     volumes:
-      - mysql_data:/var/lib/mysql
+      - trust_registry_postgres_data:/var/lib/postgresql/data
     
     networks:
       - microservice-net
@@ -143,5 +148,5 @@ volumes:
   postgres_data:
     name: issuer_postgres_data
 
-  mysql_data:
-    name: trust-registry_mysql_data
+  trust_registry_postgres_data:
+    name: trust-registry_postgres_data
