@@ -62,8 +62,6 @@ services:
       - key: Email__smtpPort
         sync: false
 
-
-
   - type: web
     name: verifier
     env: docker
