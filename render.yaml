@@ -8,6 +8,9 @@ services:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
 
+      - key: ASPNETCORE_URLS
+        value: http://+:80
+
       - key: ISSUER_URL
         value: http://issuer:80
 
@@ -25,9 +28,41 @@ services:
     envVars:
       - key: ConnectionStrings__DefaultConnection
         sync: false
+      
+      - key: ASPNETCORE_URLS
+        value: http://+:80
 
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
+      
+      - key: Jwt__Secret
+        sync: false
+      
+      - key: Jwt__Issuer
+        sync: false
+      
+      - key: Jwt__Audience
+        sync: false
+
+      - key: Jwt__ExpirationToken
+        sync: false
+
+      - key: RSA_PRIVATE_KEY
+        sync: false
+
+      - key: Email__Sender
+        sync: false
+      
+      - key: Email__password
+        sync: false
+      
+      - key: Email__smtpHost
+        sync: false
+
+      - key: Email__smtpPort
+        sync: false
+
+
 
   - type: web
     name: verifier
@@ -38,6 +73,9 @@ services:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
 
+      - key: ASPNETCORE_URLS
+        value: http://+:80
+
   - type: web
     name: trust-registry
     env: docker
@@ -46,6 +84,9 @@ services:
     envVars:
       - key: ConnectionStrings__DefaultConnection
         sync: false
+
+      - key: ASPNETCORE_URLS
+        value: http://+:80
 
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
