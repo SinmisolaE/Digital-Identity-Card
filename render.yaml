@@ -3,7 +3,7 @@ services:
     name: gateway
     env: docker
     dockerfilePath: ./src/backend/Gateway/Dockerfile
-    dockerContext: ./src/backend
+    dockerContext: ./src/backend/Gateway
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
@@ -21,7 +21,7 @@ services:
     name: issuer
     env: docker
     dockerfilePath: ./src/backend/IssuerSolution/Dockerfile
-    dockerContext: ./src/backend
+    dockerContext: ./src/backend/IssuerSolution
     envVars:
       - key: ConnectionStrings__DefaultConnection
         sync: false
@@ -33,7 +33,7 @@ services:
     name: verifier
     env: docker
     dockerfilePath: ./src/backend/VerifierSolution/Dockerfile
-    dockerContext: ./src/backend
+    dockerContext: ./src/backend/VerifierSolution
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
@@ -42,7 +42,7 @@ services:
     name: trust-registry
     env: docker
     dockerfilePath: ./src/backend/TrustRegistrySolution/Dockerfile
-    dockerContext: ./src/backend
+    dockerContext: ./src/backend/TrustRegistrySolution
     envVars:
       - key: ConnectionStrings__DefaultConnection
         sync: false
