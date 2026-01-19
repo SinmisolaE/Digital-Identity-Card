@@ -17,7 +17,7 @@ services:
       - key: TRUST_REGISTRY_URL
         value: http://trust-registry:80
 
-  - type: private
+  - type: web
     name: issuer
     env: docker
     dockerfilePath: ./src/backend/IssuerSolution/Dockerfile
@@ -29,7 +29,7 @@ services:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
 
-  - type: private
+  - type: web
     name: verifier
     env: docker
     dockerfilePath: ./src/backend/VerifierSolution/Dockerfile
@@ -38,7 +38,7 @@ services:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
 
-  - type: private
+  - type: web
     name: trust-registry
     env: docker
     dockerfilePath: ./src/backend/TrustRegistrySolution/Dockerfile
