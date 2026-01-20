@@ -3,15 +3,8 @@
   publish = "build"
   command = "npm run build"
 
-[build.ignore]
-  paths = ["backend/**", "frontend/issuer/**", "frontend/verifier/**"]
-
-[[ignore]]
-  paths = [
-    "backend/**",
-    "frontend/issuer/**", 
-    "frontend/verifier/**"
-  ]
+  # Skip builds when only backend or other frontends change
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- backend frontend/issuer frontend/verifier"
 
 [[redirects]]
   from = "/*"
