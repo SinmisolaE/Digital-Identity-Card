@@ -74,6 +74,9 @@ services:
       - key: ASPNETCORE_URLS
         value: http://+:80
 
+      - key: RSA_PUBLIC_KEY
+        sync: false
+
   - type: web
     name: trust-registry
     env: docker

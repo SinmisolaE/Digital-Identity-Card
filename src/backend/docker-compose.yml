@@ -91,6 +91,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
+      - RSA_PUBLIC_KEY=${RSA_PUBLIC_KEY}
     
     networks:
       - microservice-net

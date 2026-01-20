@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 
 using System.Text.Json;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Verifier.Core.DTO;
 using Verifier.Core.Entity;
@@ -18,13 +19,15 @@ public class VerifierService : IVerifierService
 
     private readonly IJwtVerifier _jwtVerifier;
     private readonly ICacheService _cacheService;
+    private readonly string _publicKeyFromEnv;
 
-    public VerifierService(ITrustRegistryClient trustRegistry, IJwtVerifier jwtVerifier, ICacheService cacheService, ILogger<TrustRegistry> logger)
+    public VerifierService(ITrustRegistryClient trustRegistry, IJwtVerifier jwtVerifier, ICacheService cacheService, ILogger<TrustRegistry> logger, IConfiguration configuration)
     {
         _logger = logger;
         _trustRegistry = trustRegistry;
         _jwtVerifier = jwtVerifier;
         _cacheService = cacheService;
+        _publicKeyFromEnv = configuration["RSA_PUBLIC_KEY"] ?? string.Empty;
     }
 
     public async Task<CitizenDTO> GetCitizenAsync(JwtDTO jwtDTO)
@@ -40,7 +43,15 @@ public class VerifierService : IVerifierService
         var cacheKey = "gra";
         var publicKey = "";
 
-        var response = await _cacheService.GetStringAsync(cacheKey);
+        // Use env var if available (for prototype/development)
+        if (!string.IsNullOrEmpty(_publicKeyFromEnv))
+        {
+            _logger.LogInformation("Using public key from environment variable");
+            publicKey = _publicKeyFromEnv;
+        }
+        else
+        {
+            var response = await _cacheService.GetStringAsync(cacheKey);
 
         // if key no in cache
         if (string.IsNullOrEmpty(response))
@@ -82,8 +93,9 @@ public class VerifierService : IVerifierService
             }
             else _logger.LogError("String failed to store to cache");
 
-        } else {
-            publicKey = response;
+            } else {
+                publicKey = response;
+            }
         }
         
 
