@@ -104,7 +104,7 @@ public class VerifierService : IVerifierService
     public string GetUrl()
     {
         _logger.LogInformation("Url to verify credentials which client comminucates to passed");
-        return "https://bioclimatological-lauri-bedazzlingly.ngrok-free.dev/verifier/verify/";
+        return "https://gateway-mmjm.onrender.com/verifier/verify/";
     }
 
 }

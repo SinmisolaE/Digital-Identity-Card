@@ -41,6 +41,9 @@ public class RsaKeyService : IRsaKeyService
         _logger.LogInformation("Getting private key string");
         var privateKeyString = await GetPrivateKeyPem();
 
+        // Replace literal \n with actual newlines (needed when reading from environment variables)
+        privateKeyString = privateKeyString.Replace("\\n", "\n");
+
         RSA rsa = RSA.Create();
 
         _logger.LogInformation("Converting to key");
