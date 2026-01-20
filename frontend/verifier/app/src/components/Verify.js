@@ -123,8 +123,8 @@ const Verify = () => {
         setVerificationUrl('');
     }
 
-    const handleLogout = async (e) => {
-        navigate('/');
+    const handleAutoVerify = async (e) => {
+        navigate('/auto-verify');
     }
 
 
@@ -138,8 +138,8 @@ const Verify = () => {
 
                 <div className="container">
                     <span className="navbar-brand fw-bold text-primary ">Verifier Portal</span>
-                    <button className="btn btn-outline-danger" onClick={handleLogout}>
-                        Logout
+                    <button className="btn btn-outline-primary" onClick={handleAutoVerify}>
+                        Auto Verify
                     </button>
                 </div>
             </nav>

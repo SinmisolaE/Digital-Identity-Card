@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "DI Verifier",
+  "name": "Digital Identity Verifier",
   "icons": [
     {
       "src": "favicon.ico",
