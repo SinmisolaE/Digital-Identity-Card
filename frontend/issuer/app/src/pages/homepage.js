@@ -19,6 +19,8 @@ const Homepage = () => {
         try {
             if ((email === "admin@gmail.com") && (password === "admin")) {
                 navigate("./issue");
+            } else {
+                setError("email or password incorrect");
             }
         
            /* const response = await axios.post('http://localhost:5091/issuer/issue', {

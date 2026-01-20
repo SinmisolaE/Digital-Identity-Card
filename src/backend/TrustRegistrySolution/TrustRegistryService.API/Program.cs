@@ -35,7 +35,16 @@ builder.Services.AddDbContext<TRDbContext>(options =>
 builder.Services.AddScoped<IRegistryRepository, RegistryRepository>();
 builder.Services.AddScoped<IRegistryService, RegistryService>();
 
-
+// enable cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -48,6 +57,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
