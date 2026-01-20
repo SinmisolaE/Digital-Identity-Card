@@ -27,7 +27,7 @@ const Verify = () => {
 
         try {
             
-            const response = await axios.get('http://localhost:5091/verifier/challenge', {
+            const response = await axios.get('https://gateway-mmjm.onrender.com/verifier/challenge', {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -76,7 +76,7 @@ const Verify = () => {
         const poll = async () => {
             try {
 
-                const response = await axios.get(`http://localhost:5091/verifier/status?nonce=${currentNonce}`);
+                const response = await axios.get(`https://gateway-mmjm.onrender.com/verifier/status?nonce=${currentNonce}`);
 
                 console.log(response?.data);
                 const {status, citizenData, isCompleted } = response.data;
@@ -251,7 +251,7 @@ const Verify = () => {
                                                 {userData.photo ? (
                                                 
                                                     <img 
-                                                        src={`http://localhost:5091/issuer${userData.photo}`} 
+                                                        src={`https://gateway-mmjm.onrender.com/issuer${userData.photo}`} 
                                                         alt="Profile" 
                                                         className="img-thumbnail rounded-circle"
                                                         style={{width: '100px', height: '100px', objectFit: 'cover'}}

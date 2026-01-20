@@ -56,6 +56,8 @@ public class RsaKeyService : IRsaKeyService
         _logger.LogInformation("Trying to get key from config");
         var privateKeyString = _configuration["RSA_PRIVATE_KEY"];
 
+        _logger.LogInformation(privateKeyString);
+
         if (string.IsNullOrEmpty(privateKeyString))
         {
             _logger.LogInformation("Key not found... Generating");

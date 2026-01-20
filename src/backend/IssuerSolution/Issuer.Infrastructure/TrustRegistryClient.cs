@@ -33,7 +33,7 @@ public class TrustRegistryClient : ITrustRegistryClient
         _logger.LogInformation("Trying to add registry");
         
 
-        var response = await _httpClient.PostAsJsonAsync($"http://localhost:5051/register", registryDTO);
+        var response = await _httpClient.PostAsJsonAsync($"https://trust-registry.onrender.com/register", registryDTO);
 
         if (response == null)
         {
