@@ -124,7 +124,7 @@ const Verify = () => {
     }
 
     const handleLogout = async (e) => {
-        navigate('/login');
+        navigate('/');
     }
 
 

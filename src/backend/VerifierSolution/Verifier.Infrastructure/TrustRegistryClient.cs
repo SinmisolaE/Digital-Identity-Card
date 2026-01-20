@@ -30,7 +30,7 @@ public class TrustRegistryClient : ITrustRegistryClient
         _logger.LogInformation("🔍 Calling URL: {Url}", url);
 
 
-        var response = await _httpClient.GetAsync("http://localhost:5051/issuer?issuer=gra");
+        var response = await _httpClient.GetAsync("https://trust-registry.onrender.com/issuer?issuer=gra");
 
         _logger.LogInformation($"Status: {response.StatusCode}");
 

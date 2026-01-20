@@ -118,6 +118,8 @@ const VerifyIdentity = () => {
         body: JSON.stringify(payload)
       });
 
+      console.log(response);
+
       if (response.ok) {
         alert("Credential shared successfully");
         console.log("Credential shared successfully");
