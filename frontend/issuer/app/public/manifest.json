@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "DI Issuer",
+  "name": "Digital Identity Issuer",
   "icons": [
     {
       "src": "favicon.ico",
