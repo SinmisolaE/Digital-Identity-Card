@@ -41,25 +41,14 @@ public class RsaKeyService : IRsaKeyService
         _logger.LogInformation("Getting private key string");
         var privateKeyString = await GetPrivateKeyPem();
 
-        using (RSA rsa = RSA.Create())
-        {
+        RSA rsa = RSA.Create();
 
-            _logger.LogInformation("Converting to key");
-            rsa.ImportFromPem(privateKeyString);
+        _logger.LogInformation("Converting to key");
+        rsa.ImportFromPem(privateKeyString);
 
-            RsaSecurityKey privateKey = new RsaSecurityKey(rsa.ExportParameters(true));
+        RsaSecurityKey privateKey = new RsaSecurityKey(rsa.ExportParameters(true));
 
-
-            return privateKey;
-        }
-
-
-
-        /*
-        _logger.LogInformation("Trying to get private key");
-        return new RsaSecurityKey(rsa.ExportParameters(true));
-
-        */
+        return privateKey;
     }
 
     public async Task<string> GetPrivateKeyPem()

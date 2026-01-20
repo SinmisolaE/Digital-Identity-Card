@@ -222,7 +222,7 @@ const Main = () => {
         try {
             
 
-            const response = await axios.post('https://verifier-kttr.onrender.com/issuer/issue', formData, {
+            const response = await axios.post('https://gateway-mmjm.onrender.com/issuer/issue', formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
