@@ -80,7 +80,7 @@ const AutoVerify = () => {
 
         try {
             
-            const response = await axios.get('http://localhost:5091/verifier/challenge', {
+            const response = await axios.get('https://gateway-mmjm.onrender.com/verifier/challenge', {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -129,7 +129,7 @@ const AutoVerify = () => {
         const poll = async () => {
             try {
 
-                const response = await axios.get(`http://localhost:5091/verifier/status?nonce=${currentNonce}`);
+                const response = await axios.get(`https://gateway-mmjm.onrender.com/verifier/status?nonce=${currentNonce}`);
 
                 console.log(response?.data);
                 const {status, citizenData, isCompleted } = response.data;
