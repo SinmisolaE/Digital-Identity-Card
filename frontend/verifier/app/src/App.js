@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Verify/>}/>
         <Route path="/verify" element={<Verify/>}/>
-        <Route path="/autoverify" element={<AutoVerify/>}/>
+        <Route path="/auto-verify" element={<AutoVerify/>}/>
       </Routes>
     </Router>
   );
